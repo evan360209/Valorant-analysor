@@ -24,7 +24,13 @@
   </div>
   <div class="header-meta">
     <div>Masters London 2026 &mdash; <strong id="player-count">loading…</strong></div>
-    <div>Last updated: <strong id="updated-at">—</strong></div>
+    <div class="header-refresh-row">
+      <div class="header-update-info">
+        <span>Last scraped: <strong id="updated-at">—</strong></span>
+        <span class="header-update-hint">Run <code>python3 scraper.py</code> to get latest data, then click ↺</span>
+      </div>
+      <button id="refresh-btn" title="Reload page with latest data">↺ Refresh</button>
+    </div>
   </div>
 </header>
 

@@ -64,6 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  document.getElementById('refresh-btn').addEventListener('click', () => location.reload());
+
   // Close modal on backdrop click
   document.getElementById('modal-overlay').addEventListener('click', e => {
     if (e.target === document.getElementById('modal-overlay')) closeModal();
