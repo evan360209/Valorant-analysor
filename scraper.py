@@ -2,9 +2,39 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import re
+import time
 from datetime import datetime
 
+try:
+    from config import DEEPSEEK_API_KEY
+except ImportError:
+    DEEPSEEK_API_KEY = None
+
 URL = "https://www.vlr.gg/event/stats/2765/valorant-masters-london-2026"
+
+ROLE_WEIGHTS = {
+    'Duelist':    [1.4, 1.5, 0.7, 1.0, 0.4],  # fp, en, sv, cl, tp
+    'Initiator':  [1.0, 0.8, 1.2, 0.8, 1.4],
+    'Controller': [0.8, 0.3, 1.3, 0.4, 1.6],
+    'Sentinel':   [0.9, 0.4, 1.5, 1.0, 1.4],
+    'Unknown':    [1.0, 1.0, 1.0, 1.0, 1.0],
+}
+
+ROLE_KEY_DIMS = {
+    'Duelist':    ['firepower', 'entry', 'clutch'],
+    'Initiator':  ['firepower', 'survivability', 'teamplay'],
+    'Controller': ['teamplay', 'survivability', 'firepower'],
+    'Sentinel':   ['survivability', 'teamplay', 'clutch'],
+    'Unknown':    ['firepower', 'survivability', 'teamplay'],
+}
+
+ROLE_CONTEXT = {
+    'Duelist':    'As a Duelist, Firepower and Entry are primary responsibilities. Clutch and Teamplay are secondary.',
+    'Initiator':  'As an Initiator, Teamplay and Survivability are the primary job. Entry is secondary.',
+    'Controller': 'As a Controller, Teamplay and Survivability are primary. Low Entry and Clutch are EXPECTED — do NOT criticize them.',
+    'Sentinel':   'As a Sentinel, Survivability and Teamplay are primary. Entry is NOT expected to be high — do not criticize it.',
+    'Unknown':    '',
+}
 
 AGENT_ROLES = {
     "jett": "Duelist", "reyna": "Duelist", "neon": "Duelist",
@@ -105,9 +135,11 @@ def classify_archetype(scores, p):
     fkpr = p.get("fkpr", 0)
     fdpr = p.get("fdpr", 0)
 
-    avg_score = (fp + en + sv + cl + tp) / 5
-    # Dynamic 0–100 scale: best player ≈ 100, worst ≈ 0, median ≈ 50
-    tier = "strong" if avg_score >= 60 else ("struggling" if avg_score < 35 else "average")
+    role = p.get("role", "Unknown")
+    weights = ROLE_WEIGHTS.get(role, ROLE_WEIGHTS['Unknown'])
+    vals = [fp, en, sv, cl, tp]
+    weighted_avg = sum(v * w for v, w in zip(vals, weights)) / sum(weights)
+    tier = "strong" if weighted_avg >= 60 else ("struggling" if weighted_avg < 35 else "average")
 
     all_vals = [fp, en, sv, cl, tp]
     max_val = max(all_vals)
@@ -336,6 +368,101 @@ def get_fallback_data():
     return players
 
 
+EN_TEMPLATES = {
+    'First Blood Hunter':  lambda n: f"{n} is a relentless first-blood specialist who consistently wins opening duels and shifts map control before most players have fired a shot.",
+    'Calculated Risk':     lambda n: f"{n} approaches entry with tactical aggression — not reckless, not passive — generating consistent pressure while keeping risk manageable.",
+    'Glass Cannon':        lambda n: f"{n} loves to take the first fight but hasn't converted that aggression into consistent round wins. High risk, inconsistent reward.",
+    'Silent Assassin':     lambda n: f"{n} is a high-efficiency carry: elite damage output, strong K/D, and the ability to close rounds without needing the highlight reel.",
+    'Reliable Fragger':    lambda n: f"{n} is a steady, dependable damage dealer — not flashy, but consistently present on the scoreboard when it matters.",
+    'Misfiring':           lambda n: f"{n} has the tools to carry but the numbers show inconsistency. Some rounds dominant, others absent — ceiling is higher with more stability.",
+    'Comeback King':       lambda n: f"{n} is the player opponents fear in 1vX situations. Exceptional clutch rate signals elite composure and the ability to convert rounds that should be lost.",
+    'Pressure Player':     lambda n: f"{n} shows up when the round is on the line. Reliable under pressure, with the composure to stay calm in late-round situations.",
+    'Lucky Shot':          lambda n: f"{n} has had standout clutch moments this tournament, though the sample is limited. A few more performances like those would change the narrative.",
+    'The Enabler':         lambda n: f"{n} makes teammates better. High assist rates and exceptional round participation show a player who creates opportunities and keeps rounds alive.",
+    'Team Player':         lambda n: f"{n} is a reliable team-first player whose consistent participation and assist numbers show clear role understanding and disciplined execution.",
+    'Role Question Mark':  lambda n: f"{n}'s numbers sit below role average without a clear standout category. Could reflect tough matchups, strategic sacrifice, or an off tournament.",
+    'Swiss Army Knife':    lambda n: f"{n} is a complete player with no exploitable weakness — elite across firepower, entry, clutch, and teamplay. The kind of profile coaches build systems around.",
+    'Jack of All Trades':  lambda n: f"{n} is well-rounded without dominating any single category. Versatile and adaptable — no obvious weak point for opponents to target.",
+    'Dead Weight':         lambda n: f"{n}'s numbers are significantly below role average across all dimensions. Whether matchup difficulty or form, the stats don't tell a flattering story this tournament.",
+}
+
+ZH_TEMPLATES = {
+    'First Blood Hunter':  lambda n: f"{n}是本届赛事最具威胁性的开团选手之一，能够稳定赢得前期对枪，在大多数人开枪之前便已掌控地图节奏。",
+    'Calculated Risk':     lambda n: f"{n}的打法介于激进与保守之间，以可控风险换取稳定推进空间，即便数据不亮眼，对团队贡献切实存在。",
+    'Glass Cannon':        lambda n: f"{n}热衷于主动发起对枪，但尚未将进攻性转化为稳定回合胜率。高风险、高波动，可以瞬间扭转局面，也可能送上早期优势。",
+    'Silent Assassin':     lambda n: f"{n}是高效carry选手：顶级伤害输出、稳定K/D，不需要高光时刻便能锁定回合。当别人抢首杀时，{n}已悄悄完成最具价值的击杀。",
+    'Reliable Fragger':    lambda n: f"{n}是稳定可靠的输出手，不花哨，但在关键时刻始终出现在计分板上，整个赛程都能交出稳健的数据表现。",
+    'Misfiring':           lambda n: f"{n}具备核心carry的实力，但数据显示发挥不稳定，某些回合强势，另一些几乎消失。找到状态稳定性后，上限将会更高。",
+    'Comeback King':       lambda n: f"{n}是对手在1vX局面中最不想遇到的对手，超高clutch胜率体现了顶级心态、扎实判断，以及将本该输掉的回合硬生生拿下的实力。",
+    'Pressure Player':     lambda n: f"关键回合来临时，{n}会站出来。不一定是积分榜首位，但在压力时刻表现稳定，后期冷静处理局势的能力为团队带来切实价值。",
+    'Lucky Shot':          lambda n: f"{n}在本届赛事中有过几次亮眼的clutch时刻，但样本有限，还不足以断定为稳定强项。再多几场类似表现，评价将会改变。",
+    'The Enabler':         lambda n: f"{n}能让队友变得更强，高助攻数与超高回合参与率体现了善于创造机会、收集信息、在关键时刻撑住局面的能力。",
+    'Team Player':         lambda n: f"{n}是可靠的团队型选手，稳定的回合参与度和扎实的助攻数说明他清楚自己的定位，并在不需要个人英雄主义的情况下持续执行到位。",
+    'Role Question Mark':  lambda n: f"{n}各维度数据均低于同位置平均水平，且没有明显亮点解释这一差距。可能是对阵强队、战术牺牲，也可能只是本届状态欠佳。",
+    'Swiss Army Knife':    lambda n: f"{n}是无懈可击的全能型选手，火力、突破、clutch与团队协作均处于顶级水准，这种均衡的能力图谱是教练团队构建体系的基础。",
+    'Jack of All Trades':  lambda n: f"{n}全面均衡，但没有哪个维度形成统治力。灵活适应各种局面，对手也很难找到明显软肋，稳定性是目前最大的优势。",
+    'Dead Weight':         lambda n: f"{n}在本届赛事中各项关键数据均明显低于同位置平均水平，无论是对阵强队、打法不契合还是状态欠佳，本届数据都难以给出正面评价。",
+}
+
+
+def generate_ai_summary(p):
+    if not DEEPSEEK_API_KEY or DEEPSEEK_API_KEY == "sk-":
+        return None
+
+    vs = p.get("vs_role", {})
+    prompt = f"""You are a professional Valorant esports analyst. Write a concise player analysis for {p['name']}.
+
+Player: {p['name']} | Team: {p['team']} | Role: {p['role']} | Archetype: {p['archetype']}
+
+Stats:
+- ACS: {p['acs']:.0f} | ADR: {p['adr']:.1f} | K/D: {p['kd']:.2f} | KAST: {p['kast']:.1f}%
+- FKPR: {p['fkpr']:.2f} | FDPR: {p['fdpr']:.2f} | APR: {p['apr']:.2f} | Clutch%: {p['clutch_pct']:.1f}%
+
+Strength Scores (0-100, relative to tournament field):
+Firepower {p['firepower']:.0f} | Entry {p['entry']:.0f} | Survivability {p['survivability']:.0f} | Clutch {p['clutch']:.0f} | Teamplay {p['teamplay']:.0f}
+
+vs Role Average: ACS {vs.get('acs','—')} | ADR {vs.get('adr','—')} | KAST {vs.get('kast','—')} | FKPR {vs.get('fkpr','—')}
+
+Role context: {ROLE_CONTEXT.get(p.get('role', 'Unknown'), '')}
+
+Return ONLY valid JSON with this exact format:
+{{"en": "2-3 sentence English analysis.", "zh": "2-3句中文分析。"}}
+
+Requirements:
+- English: professional esports analyst tone, reference specific stats, explain WHY this player stands out or falls short
+- Chinese: same content in natural Chinese, engaging tone, mention the player name
+- Respect the role context above — do NOT criticize dimensions that are not primary responsibilities for this role
+- Do NOT use markdown, do NOT add any text outside the JSON object"""
+
+    try:
+        resp = requests.post(
+            "https://api.deepseek.com/chat/completions",
+            headers={
+                "Authorization": f"Bearer {DEEPSEEK_API_KEY}",
+                "Content-Type": "application/json",
+            },
+            json={
+                "model": "deepseek-chat",
+                "messages": [{"role": "user", "content": prompt}],
+                "temperature": 0.7,
+                "max_tokens": 400,
+            },
+            timeout=20,
+        )
+        resp.raise_for_status()
+        content = resp.json()["choices"][0]["message"]["content"].strip()
+        # Strip markdown code fences if model wraps output
+        if content.startswith("```"):
+            content = re.sub(r"^```[a-z]*\n?", "", content)
+            content = re.sub(r"\n?```$", "", content)
+        result = json.loads(content)
+        if "en" in result and "zh" in result:
+            return result
+    except Exception as e:
+        print(f"    ! Failed: {e}")
+    return None
+
+
 def main():
     players = scrape()                          # pass 1: raw stats only
     ranges = compute_stat_ranges(players)       # compute dynamic bounds
@@ -343,7 +470,26 @@ def main():
         scores = compute_scores(p, ranges)
         p.update(scores)
         p["archetype"] = classify_archetype(scores, p)
+        p["role_key_dims"] = ROLE_KEY_DIMS.get(p["role"], ROLE_KEY_DIMS['Unknown'])
     add_role_benchmarks(players)
+
+    # Generate summaries (AI if key set, else fallback templates)
+    use_ai = bool(DEEPSEEK_API_KEY and DEEPSEEK_API_KEY != "sk-")
+    print(f"Generating summaries via {'DeepSeek API' if use_ai else 'built-in templates'}...")
+    for i, p in enumerate(players):
+        arch = p.get("archetype", "Jack of All Trades")
+        if use_ai:
+            result = generate_ai_summary(p)
+            if result:
+                p["summary_en"] = result["en"]
+                p["summary_zh"] = result["zh"]
+                print(f"  [{i+1:2d}/{len(players)}] {p['name']} ✓")
+                time.sleep(0.3)
+                continue
+            print(f"  [{i+1:2d}/{len(players)}] {p['name']} → fallback")
+        p["summary_en"] = EN_TEMPLATES.get(arch, lambda n: "")(p["name"])
+        p["summary_zh"] = ZH_TEMPLATES.get(arch, lambda n: "")(p["name"])
+
     output = {
         "updated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "source": URL,

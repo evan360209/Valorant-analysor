@@ -652,6 +652,13 @@ tbody td {
   color: var(--text-muted);
 }
 
+.modal-role-focus {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.4px;
+  margin-top: 4px;
+}
+
 .modal-close-btn {
   background: var(--bg3);
   border: 1px solid var(--border);
