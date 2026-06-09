@@ -473,22 +473,10 @@ def main():
         p["role_key_dims"] = ROLE_KEY_DIMS.get(p["role"], ROLE_KEY_DIMS['Unknown'])
     add_role_benchmarks(players)
 
-    # Generate summaries (AI if key set, else fallback templates)
-    use_ai = bool(DEEPSEEK_API_KEY and DEEPSEEK_API_KEY != "sk-")
-    print(f"Generating summaries via {'DeepSeek API' if use_ai else 'built-in templates'}...")
-    for i, p in enumerate(players):
-        arch = p.get("archetype", "Jack of All Trades")
-        if use_ai:
-            result = generate_ai_summary(p)
-            if result:
-                p["summary_en"] = result["en"]
-                p["summary_zh"] = result["zh"]
-                print(f"  [{i+1:2d}/{len(players)}] {p['name']} ✓")
-                time.sleep(0.3)
-                continue
-            print(f"  [{i+1:2d}/{len(players)}] {p['name']} → fallback")
-        p["summary_en"] = EN_TEMPLATES.get(arch, lambda n: "")(p["name"])
-        p["summary_zh"] = ZH_TEMPLATES.get(arch, lambda n: "")(p["name"])
+    # Summaries are now generated on-demand in the browser (no API calls here)
+    for p in players:
+        p["summary_en"] = ""
+        p["summary_zh"] = ""
 
     output = {
         "updated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -506,6 +494,12 @@ def main():
         json.dump(output, f, ensure_ascii=False, indent=2)
         f.write(";\n")
     print("Saved data.js (used by the dashboard).")
+
+    # Write api_config.js so the browser can call DeepSeek on-demand
+    api_key = DEEPSEEK_API_KEY or ""
+    with open("api_config.js", "w", encoding="utf-8") as f:
+        f.write(f"window.DEEPSEEK_API_KEY = {json.dumps(api_key)};\n")
+    print("Saved api_config.js (browser uses this for on-demand AI summaries).")
 
 
 if __name__ == "__main__":

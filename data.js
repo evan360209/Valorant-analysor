@@ -1,5 +1,5 @@
 window.VALORANT_DATA = {
-  "updated_at": "2026-06-09 13:17:32",
+  "updated_at": "2026-06-09 14:07:49",
   "source": "https://www.vlr.gg/event/stats/2765/valorant-masters-london-2026",
   "players": [
     {
@@ -48,8 +48,8 @@ window.VALORANT_DATA = {
         "kast": "+6.9%",
         "clutch_pct": "+71.4%"
       },
-      "summary_en": "keiko plays the Sentinel role with an aggressive, first-blood-hunting style that is atypical for the position, and his elite Firepower score of 96, combined with a K/D of 1.32 and an ACS 28.5% above the role average, shows he consistently wins duels and generates exceptional damage. However, his low Survivability and Teamplay scores relative to the role's primary responsibilities suggest he may overextend for early picks, which can leave his team exposed on defense and reduce his overall impact in post-plant situations.",
-      "summary_zh": "keiko以哨兵身份执行激进的先手击杀风格，这在位置上并不常见；他高达96的火力评分、1.32的K/D以及高出角色平均28.5%的ACS，证明他能稳定赢得对枪并制造出类拔萃的伤害。但他较低的生存能力和团队配合分数，相对于哨兵的核心职责而言，暗示他可能为了抢首杀而过度前压，导致防守阵型出现缺口，并削弱了他在残局中的影响力。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "s0pp",
@@ -96,8 +96,8 @@ window.VALORANT_DATA = {
         "kast": "+16.4%",
         "clutch_pct": "-100.0%"
       },
-      "summary_en": "s0pp is an elite first blood hunter whose 0.27 FKPR (+119.4% vs role average) and perfect 100 Entry score define his hyper-aggressive Duelist style, consistently winning opening duels to give FUT early map control. His 272 ACS and 1.37 K/D reflect dominant firepower (99 score), but the 0% clutch rate and 73 survivability suggest he trades impact for high-risk aggression, which is acceptable for his primary role responsibilities.",
-      "summary_zh": "s0pp是顶级的首杀猎人，0.27的FKPR（比角色均值高119.4%）和完美的100分Entry评分，展现了他极具侵略性的决斗者风格，总是能为FUT赢下开局对枪获取地图控制。272的ACS和1.37的K/D印证了他的恐怖火力（99分），但0%的残局胜率和73的生存能力说明他牺牲稳定性换取高风险进攻，这对他的主要职责而言完全可以接受。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "Neon",
@@ -145,8 +145,8 @@ window.VALORANT_DATA = {
         "kast": "+8.7%",
         "clutch_pct": "-61.0%"
       },
-      "summary_en": "Neon delivers exceptional value as a Controller, posting an ACS 27.6% above role average and a massive 120.6% lead in FKPR, confirming his identity as a true First Blood Hunter. His 146.6 ADR and 1.28 K/D highlight an aggressive, high-impact style that defies typical Controller output, while his 85 Survivability score ensures he maintains presence without compromising his primary teamplay duties. However, his 6.0% Clutch rate is irrelevant for his role, and his 0.30 APR suggests he could improve utility usage to better enable teammates in post-plant scenarios.",
-      "summary_zh": "Neon作为一名控场者打出了远超同位置平均水准的火力——ACS高出27.6%，首次击杀率（FKPR）更是领先120.6%，完美诠释了‘首杀猎手’这一特殊定位。他的146.6平均伤害和1.28 KD证明了这种激进风格并未牺牲生存能力（85分），反而在保证团队协作的前提下制造了巨大压力。至于6.0%的残局胜率和0.30的助攻率，考虑到控场者的职责重心，这些数据完全在可接受范围内，无需苛责。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "Sayonara",
@@ -194,8 +194,8 @@ window.VALORANT_DATA = {
         "kast": "+8.7%",
         "clutch_pct": "+29.9%"
       },
-      "summary_en": "Sayonara is an exceptional Controller who redefines the role's expectations through aggressive first-blood hunting, with a FKPR 76.5% above the role average and elite firepower (89) that drives his +46.1% ACS advantage. His standout ADR of 160.4 and 1.22 K/D indicate he consistently wins duels while maintaining solid survivability (70) and strong teamplay (72), proving he can provide utility without sacrificing impact. The only notable weakness is a low clutch rate (20%), but this is a minor concern given his primary role demands team coordination over isolated heroics.",
-      "summary_zh": "Sayonara是一位重新定义控场者角色的顶尖选手，他的首杀率（FKPR）比同位置平均值高出76.5%，配合89的火力评分，让他的平均战斗评分（ACS）领先角色均值46.1%。高达160.4的每回合伤害和1.22的K/D证明他既能稳定对枪取胜，又保持了良好的生存能力（70）和团队配合（72），在提供控场道具的同时不影响个人输出。虽然残局胜率（20%）偏低，但这对于以团队协作为核心的控场者来说并非关键短板。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "PROFEK",
@@ -243,8 +243,8 @@ window.VALORANT_DATA = {
         "kast": "+7.2%",
         "clutch_pct": "+49.4%"
       },
-      "summary_en": "PROFEK operates as a quintessential enabler within Team Vitality, posting elite Teamplay (86) and Survivability (86) scores that drive his +7.2% KAST above the controller average. His low FKPR (0.07) and Entry (45) are perfectly acceptable for his role, as his value lies in staying alive to deploy utility and boost team cohesion rather than initiating duels. While his Firepower (61) is merely above average, his 1.25 K/D and 23% clutch rate show he can clean up rounds when needed, making him a reliable backbone for VIT’s system.",
-      "summary_zh": "PROFEK是Team Vitality体系中典型的赋能型控场，以86的团队协作和86的生存能力为核心优势，KAST高出控场平均水平7.2%。他极低的先手击杀率（0.07）和45的突破评分完全符合角色定位——他的价值在于存活以释放技能、保障团队运转，而非主动拼枪。虽然火力评分（61）仅属中上，但1.25的KD比和23%的残局胜率证明他能在关键时刻完成收割，成为VIT战术体系中最稳定的基石。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "UdoTan",
@@ -292,8 +292,8 @@ window.VALORANT_DATA = {
         "kast": "+5.8%",
         "clutch_pct": "+330.5%"
       },
-      "summary_en": "UdoTan is an explosive duelist defined by elite firepower and an unmatched clutch gene, boasting a 93 Firepower score and a perfect 100 in Clutch% that justify his 'Comeback King' archetype. While his 0.11 FKPR is -10.6% below the role average, his 252 ACS and 1.33 K/D prove he compensates by converting mid-round engagements into high-impact frags, though his 37 Teamplay score suggests he often operates independently rather than enabling teammates.",
-      "summary_zh": "UdoTan 是一名以爆炸性火力和顶级残局能力著称的决斗者，93的火力评分与100的残局评分完美诠释了他'逆转王'的称号。尽管他的首杀率（0.11）比角色均值低10.6%，但252的平均战斗评分和1.33的K/D证明他擅长在中后期对枪中制造高影响力击杀——不过仅37的团队配合分也暗示他更偏向个人英雄主义而非为队友创造空间。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "xeus",
@@ -341,8 +341,8 @@ window.VALORANT_DATA = {
         "kast": "+11.9%",
         "clutch_pct": "+46.4%"
       },
-      "summary_en": "xeus excels as a first blood duelist, with FKPR 30% above the role average and strong firepower (84) driving an ACS of 234 and ADR of 151.9, both 15-17% above peers. His entry score of 68 is solid but not elite, and his clutch score of 31 is a clear weakness, but for a duelist focused on opening engagements, his primary responsibilities are well-covered.",
-      "summary_zh": "xeus作为首杀决斗者表现出色，其首杀率（FKPR）高出同位置平均水平30%，配合84的火力评分，带来234的ACS和151.9的ADR，均领先角色均值15-17%。虽然他的突破评分68中规中矩，残局能力31明显偏弱，但作为侧重开局对抗的决斗者，核心职责完成得相当到位。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "Sato",
@@ -390,8 +390,8 @@ window.VALORANT_DATA = {
         "kast": "+8.8%",
         "clutch_pct": "+20.5%"
       },
-      "summary_en": "Sato operates as a calculated risk Duelist, translating strong firepower into above-average damage output (+16.7% ADR vs role average) and solid KAST (72.0%), indicating consistent impact beyond raw fragging. However, his entry success is merely average (Entry 59) and his clutch performance is notably low (27), suggesting he excels in structured fights but struggles to convert high-pressure 1vX scenarios. His low FKPR (0.14) further highlights a tendency to defer first-contact engagements, relying instead on mid-round aggression to generate value.",
-      "summary_zh": "Sato是一名偏向计算型风险的决斗者，凭借高于同位置平均16.7%的均伤和72.0%的KAST，展现了稳定的火力输出与团队贡献。不过，他的首杀率偏低（0.14），且残局能力仅得27分，说明他更擅长在体系内打结构化对枪，而非承担高压1vX的决胜任务。整体来看，Sato是LEV阵中可靠的火力点，但若想晋升顶级决斗者，仍需提升破点果断性与残局胜率。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "Chronicle",
@@ -439,8 +439,8 @@ window.VALORANT_DATA = {
         "kast": "+16.0%",
         "clutch_pct": "+58.7%"
       },
-      "summary_en": "Chronicle is a standout Sentinel who excels at staying alive and enabling his team, evidenced by a +16% KAST and +7.8% ADR above the role average. His 1.30 K/D and 88 Survivability score reflect a disciplined playstyle that minimizes deaths while maintaining high impact. Though his clutch conversion rate is modest at 25%, his consistent utility usage and positioning make him the Swiss Army Knife Vitality relies on for map control.",
-      "summary_zh": "Chronicle作为哨位选手，以高达76%的KAST和140.1的ADR远超同位置平均水平，展现了极强的生存能力与团队贡献。他的1.30 K/D和88的生存评分证明了他极少白给，同时能持续为队伍创造地图控制优势。虽然25%的残局胜率不算顶尖，但他全面的工具人属性和稳定的站位，正是Vitality需要的那把瑞士军刀。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "yetujey",
@@ -487,8 +487,8 @@ window.VALORANT_DATA = {
         "kast": "+22.1%",
         "clutch_pct": "+52.4%"
       },
-      "summary_en": "yetujey is an exceptional Sentinel whose survivability (95/100) and KAST (+22.1% above role average) define his value, keeping him alive to provide consistent utility and map control for FUT. His ADR (+1.6%) and 1.26 K/D are strong for a Sentinel, but his low FKPR (0.09) is expected and not a weakness given his role. Where he falls short is in clutch situations (24.0% clutch rate, 64/100), suggesting he could improve his high-pressure decision-making to convert more round-ending opportunities.",
-      "summary_zh": "yetujey 是一名出色的哨位选手，其生存能力（95分）和KAST（比角色平均值高出22.1%）是他最大的价值所在，这让他能持续为FUT提供实用道具和地图控制。他的ADR（+1.6%）和1.26的K/D在哨位中相当亮眼，而0.09的首杀率完全是角色常态，无需苛责。不过他的残局胜率（24.0%，64分）还有提升空间，在高压环境下若能做出更果断的决策，将能帮队伍拿下更多关键回合。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "Derke",
@@ -536,8 +536,8 @@ window.VALORANT_DATA = {
         "kast": "+2.8%",
         "clutch_pct": "-100.0%"
       },
-      "summary_en": "Derke delivers elite firepower for VIT, with an ACS 16.8% above the role average and a K/D of 1.19, but his entry impact is muted—his FKPR of 0.16 is only 30% above average, not dominant for a duelist. His zero clutch success and sub-60 survivability score suggest he thrives in clean trades rather than chaotic late-rounds, fitting his calculated risk archetype. To elevate further, he needs to convert more first engagements into map control without overextending.",
-      "summary_zh": "Derke为VIT提供了顶尖火力，ACS比角色平均值高出16.8%，K/D达到1.19，但作为决斗者，他的首杀影响力不够突出——FKPR仅0.16，只比平均水平高30%。零次残局胜利和低于60的生存能力说明他更擅长干净利落的交换而非混乱的残局，符合他“计算型冒险家”的定位。要更进一步，他需要在不冒进的前提下，把更多首杀转化为地图控制权。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "kiNgg",
@@ -585,8 +585,8 @@ window.VALORANT_DATA = {
         "kast": "+4.3%",
         "clutch_pct": "+16.9%"
       },
-      "summary_en": "kiNgg performs as a reliable, low-econ Controller for Leviatán, with a 1.21 K/D and 71% KAST indicating strong survivability and consistent round presence. His +4.3% KAST and +4.0% ACS above the role average highlight his ability to contribute firepower while maintaining utility usage, though his 0.05 FKPR shows he rarely initiates engagements, which is expected for his role. Overall, he provides stable, team-oriented value without flashy entry plays, making him a solid anchor in LEV's system.",
-      "summary_zh": "kiNgg作为Leviatán的控场选手，展现出可靠的生存能力和稳定的回合影响力，1.21的K/D和71%的KAST都高于控场位平均水平。尽管他的首杀参与率（0.05）极低，但这符合控场位的职责定位——他更专注于通过高APR（0.30）和团队协作来支撑队伍架构。简而言之，kiNgg不是明星选手，但他是LEV体系中不可或缺的‘瑞士军刀’，用扎实的生存和团队贡献为队友创造空间。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "primmie",
@@ -632,8 +632,8 @@ window.VALORANT_DATA = {
         "kast": "-3.3%",
         "clutch_pct": "-100.0%"
       },
-      "summary_en": "Primmie delivers reliable firepower for FS, posting a strong 244 ACS and 153.1 ADR, both significantly above the duelist average. However, his entry impact is severely lacking with a 0.03 FKPR, ranking him near the bottom of the field, which undermines his role as a primary initiator of engagements. While his fragging ability is solid, his inability to secure first kills and zero clutch success limit his overall effectiveness as a duelist.",
-      "summary_zh": "Primmie为FS提供了稳定的火力输出，244的ACS和153.1的ADR均大幅高于决斗者平均水平，展现出不俗的击杀能力。但他在首杀环节表现极为疲软，FKPR仅0.03，远低于同位置选手，这严重削弱了其作为突破手的核心价值。尽管正面交火能力可靠，但缺乏首杀能力和0%的残局成功率，使得他的整体影响力受到明显限制。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "skuba",
@@ -681,8 +681,8 @@ window.VALORANT_DATA = {
         "kast": "+4.3%",
         "clutch_pct": "+29.9%"
       },
-      "summary_en": "Skuba operates as a prototypical Swiss Army Knife for NRG, posting a KAST of 71.0% and a Survivability score of 74 that are both well above the tournament average, which highlights his disciplined positioning and consistent map presence. While his Firepower and Entry numbers are unremarkable, his Teamplay score of 67 reflects a Controller who prioritizes utility usage and trade opportunities over raw fragging, aligning perfectly with his role's primary demands. Where he falls short is in converting high-leverage situations, as his Clutch% of 20.0% and FDPR of 0.04 suggest he rarely wins rounds when his team needs a hero play, though this is a secondary concern for his archetype.",
-      "summary_zh": "Skuba是NRG体系中的多面手，他的KAST高达71.0%、生存能力评分74，远超锦标赛平均水平，这体现了他作为控场者精准的站位和稳定的地图存在感。尽管火力与突破数据平平，但67分的团队协作评分证明他优先执行道具配合与补枪，完美契合控场职责。不过他在关键回合的终结能力稍显不足——20.0%的残局胜率和0.04的首死率说明他很少成为拯救队伍的奇兵，但这对于他的角色定位而言并非致命短板。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "KROSTALY",
@@ -730,8 +730,8 @@ window.VALORANT_DATA = {
         "kast": "+11.9%",
         "clutch_pct": "+19.4%"
       },
-      "summary_en": "KROSTALY excels as a high-survivability Initiator with a KAST of 76.0% and Teamplay score of 82, both well above the tournament average, indicating he consistently enables his team’s rounds without dying early. His low FKPR (0.03) and Entry score (32) are not weaknesses for his role, but his Clutch score of 26 and 13% clutch win rate suggest he struggles in high-pressure 1vX scenarios, which is a secondary concern. Overall, he is a reliable, system-driven player who prioritizes utility and map control over flashy plays.",
-      "summary_zh": "KROSTALY 作为一名高生存能力的先锋，凭借76.0%的KAST和82的团队协作评分显著高于赛事平均水平，证明他总能稳定为团队创造回合优势而不轻易阵亡。极低的0.03首杀率（FKPR）和32的突破评分并非其角色短板，但26的残局评分和13%的残局胜率暴露了他在高压1vX场景中的挣扎——不过这只是次要考量。总体而言，他是一位可靠的体系型选手，更注重道具控制和地图运营而非华丽操作。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "happywei",
@@ -778,8 +778,8 @@ window.VALORANT_DATA = {
         "kast": "+13.0%",
         "clutch_pct": "-100.0%"
       },
-      "summary_en": "happywei stands out as a high-efficiency Sentinel for XLG, with a KAST of 74.0% that is 13% above the role average, indicating exceptional map awareness and consistent impact without flashy plays. His ACS and ADR are both over 5% above the Sentinel mean, showing he trades effectively and contributes reliable damage, though his 0% clutch rate and low teamplay score (46) suggest he struggles in high-pressure 1vX scenarios and may lack proactive coordination with teammates. Despite a moderate firepower score of 69, his calculated risk archetype shines through his positive first-death differential (FDPR 0.02), meaning he rarely dies first, which aligns perfectly with a Sentinel’s survivability priority.",
-      "summary_zh": "happywei是XLG阵中一位效率极高的哨位选手，其74.0%的KAST远超同位置平均水平13%，证明他拥有出色的地图理解能力，能在不依赖高光操作的情况下稳定贡献价值。他的ACS和ADR分别高出哨位平均值5.1%和5.5%，说明换血效率扎实，但0%的残局胜率和仅46的团队协作评分暴露了他在高压1vX局面中的短板，以及团队联动上的不足。虽然火力评分69中规中矩，但他0.02的FDPR（首死率极低）完美契合哨位生存优先的定位，体现了他“计算型冒险”风格的精准判断——宁可少杀，绝不先倒。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "blowz",
@@ -827,8 +827,8 @@ window.VALORANT_DATA = {
         "kast": "+4.6%",
         "clutch_pct": "-44.9%"
       },
-      "summary_en": "blowz stands out as a high-survivability Initiator for LEV, with an 80 Survivability score and a KAST of 71.0% that sits 4.6% above the role average, indicating he consistently enables his team without overextending. However, his firepower is a concern at 45, reflected in an ACS 9.3% below the role average and a negative K/D of 0.96, which limits his direct impact in duels despite strong teamplay fundamentals.",
-      "summary_zh": "blowz作为LEV的先锋位，以80的生存能力和71.0%的KAST（高出同位置平均水平4.6%）脱颖而出，证明他总能稳定支援团队而不冒进。但45的火力评分和低于平均9.3%的ACS暴露了他的输出短板，0.96的负K/D也说明他在对枪中缺乏直接统治力，好在团队协作基本功扎实，弥补了这一缺陷。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "spike",
@@ -875,8 +875,8 @@ window.VALORANT_DATA = {
         "kast": "+8.8%",
         "clutch_pct": "-100.0%"
       },
-      "summary_en": "Spike performs slightly above average for a Duelist, with ACS and ADR both exceeding role norms by around 6%, but his impact is undermined by extremely low first-kill participation (FKPR 0.16) and a 0% clutch rate, suggesting he plays cautiously rather than aggressively securing space. His high KAST (72%) indicates he stays alive and contributes to rounds, but without the entry threat or late-round heroics expected of the role, he remains a reliable rather than explosive piece for LEV.",
-      "summary_zh": "Spike作为决斗者，ACS和ADR略高于角色平均水平约6%，但极低的首杀参与率（FKPR 0.16）和0%的残局胜率暴露了他打法偏保守、缺乏主动拿空间的能力。虽然72%的KAST说明他存活率高且能持续参与回合，但缺少突破威胁和残局爆发力，让他更像是LEV阵中稳定而非锋利的尖刀。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "sociablEE",
@@ -924,8 +924,8 @@ window.VALORANT_DATA = {
         "kast": "+10.1%",
         "clutch_pct": "+62.3%"
       },
-      "summary_en": "sociablEE exemplifies the Enabler archetype, with an elite KAST of 75.0% (+10.1% vs role average) and a Teamplay score of 87 that underpins FUT's structured executes. His Survivability of 78 allows him to stay alive to deploy utility, but his Firepower (53) and Entry (42) are merely average, meaning he relies on teammates to convert his space. While his low FKPR (0.08) is expected for a Controller, his 25.0% clutch rate shows he can close rounds when needed, making him a reliable backbone rather than a star fragger.",
-      "summary_zh": "sociablEE完美诠释了‘赋能者’角色，75.0%的KAST（高于角色均值10.1%）和87的团队协作分是FUT战术执行的核心支柱。高达78的生存能力让他能持续放置烟幕与道具，但53的火力和42的突破分仅属平庸——这意味着他需要队友来转化他创造的空间。作为控场者，0.08的首杀率完全合理，而25.0%的残局胜率证明他在关键时刻能稳住局面，是队伍值得信赖的基石而非明星枪手。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "Ethan",
@@ -973,8 +973,8 @@ window.VALORANT_DATA = {
         "kast": "+4.6%",
         "clutch_pct": "+19.4%"
       },
-      "summary_en": "Ethan excels in his primary initiator duties with a teamplay score of 78 and a KAST of 71%, both well above the role average, indicating he consistently enables his team's rounds. However, his firepower and clutch scores are mediocre, and his 0.90 K/D and 13% clutch rate suggest he struggles to convert utility into impactful frags or high-pressure situations. While he is a reliable support piece for NRG, his lack of entry presence (0.06 FKPR) and low survivability relative to top initiators limit his ceiling as a difference-maker.",
-      "summary_zh": "Ethan在NRG的先锋角色上表现稳健，团队协作评分78和KAST 71%都高于角色平均水平，说明他擅长为团队创造回合优势。但他的0.90 K/D和13%的残局胜率显示，他在将道具优势转化为击杀或高压关键分时略显不足。作为可靠的支援型选手，他0.06的首杀率和中等偏下的生存能力限制了他成为顶级先锋的潜力。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "Kr1stal",
@@ -1021,8 +1021,8 @@ window.VALORANT_DATA = {
         "kast": "+11.5%",
         "clutch_pct": "+217.5%"
       },
-      "summary_en": "Kr1stal stands out as an elite clutch performer with a 92 Clutch score and a 50.0% clutch win rate, far exceeding expectations for a Sentinel. His exceptional Survivability (76) and high KAST (73.0%, +11.5% vs role average) show he consistently provides value without dying, but his low ADR (112.1, -13.7% vs role average) and sub-1.0 K/D (0.95) indicate he struggles to generate consistent firepower, which limits his impact outside high-pressure rounds.",
-      "summary_zh": "Kr1stal 是位顶尖的残局专家，Clutch 评分高达 92，残局胜率 50.0%，远超哨位角色的平均水平。他出色的生存能力（76）和高 KAST（73.0%，比角色平均值高 11.5%）说明他能在不阵亡的情况下持续为团队提供价值；但 ADR（112.1，比角色平均值低 13.7%）和 K/D（0.95）偏低，暴露出他在常规对枪中火力输出不足的问题，这限制了他除残局外的整体影响力。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "Life",
@@ -1068,8 +1068,8 @@ window.VALORANT_DATA = {
         "kast": "-28.2%",
         "clutch_pct": "-100.0%"
       },
-      "summary_en": "Life's 0.87 K/D and 47.0% KAST are alarmingly low for a Sentinel, indicating he is frequently caught out of position and failing to trade utility for survival. While his first-kill rate is slightly above role average (+42.9%), his near-zero clutch conversion (0.0%) and bottom-tier survivability score (10) suggest he lacks the composure to anchor sites under pressure. His ADR is also below role average, meaning even when he survives, he isn't generating enough impact to justify his aggressive positioning.",
-      "summary_zh": "Life的K/D（0.87）和KAST（47.0%）作为哨位严重偏低，说明他频繁陷入不利位置且未能用道具换取生存空间。虽然他首杀率略高于角色平均值（+42.9%），但近乎为零的残局胜率（0.0%）和极低的生存能力评分（10）表明他在压力下缺乏稳住阵脚的冷静。同时他的ADR也低于角色平均，意味着即便存活下来，也无法产生足够的对局影响力来弥补其激进站位带来的风险。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "Jamppi",
@@ -1117,8 +1117,8 @@ window.VALORANT_DATA = {
         "kast": "+17.8%",
         "clutch_pct": "+56.1%"
       },
-      "summary_en": "Jamppi excels as a pure enabler for Vitality, boasting elite Teamplay (89) and Survivability (80) that drive his standout KAST of 80.0%—17.8% above the role average. While his firepower and entry stats are modest, his role doesn't demand aggressive dueling; instead, his low FKPR (0.08) and high APR (0.37) highlight how he consistently sets up teammates without taking risks, making him a reliable anchor for the team's system.",
-      "summary_zh": "Jamppi是Vitality体系中典型的“赋能型”先锋，团队协作（89）和生存能力（80）是他的核心优势，KAST高达80.0%，远超同位置平均水平17.8%。虽然他的火力（ACS 188）和首杀数据（FKPR 0.08）并不亮眼，但这恰恰符合他的定位——用高助攻率（APR 0.37）为队友创造空间，而非强行对枪，是队伍战术稳定运转的关键拼图。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "brawk",
@@ -1165,8 +1165,8 @@ window.VALORANT_DATA = {
         "kast": "+1.6%",
         "clutch_pct": "+120.4%"
       },
-      "summary_en": "brawk excels as a classic Enabler for NRG, with his Teamplay score of 82 and an Assist-Per-Round of 0.40 highlighting his primary role impact. While his Firepower and K/D are below average, his ADR sits 15.4% above the Initiator average, showing he consistently trades damage for space and information. His low FKPR and FDPR are acceptable for an Enabler, as his 24.0% clutch rate provides reliable late-round stability without overextending on entry.",
-      "summary_zh": "brawk是NRG体系中典型的Enabler，82的团队协作评分和0.40的每回合助攻数完美诠释了他的核心价值。尽管火力与K/D低于平均，但他的每回合伤害（ADR）比同位置选手高出15.4%，说明他始终在用伤害换取地图控制和信息。作为Enabler，他较低的率先击杀与阵亡率完全可以接受，而24.0%的残局胜率则为团队提供了可靠的后期稳定性，无需强行承担突破职责。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "NoMan",
@@ -1213,8 +1213,8 @@ window.VALORANT_DATA = {
         "kast": "-1.7%",
         "clutch_pct": "+46.4%"
       },
-      "summary_en": "NoMan shows moderate Firepower (51) and Entry (48) scores but fails to convert these into impactful stats, with an ADR of 111.4 and ACS 5.4% below the role average. His low FKPR (0.12) and high FDPR (0.16) indicate a passive entry style, while a weak Clutch score (31) suggests he struggles in high-pressure rounds. As a Jack of All Trades Duelist, he provides decent survivability (54) but lacks the explosive first-contact presence needed to consistently open sites for XLG.",
-      "summary_zh": "NoMan作为全能型决斗者，火力和突破能力（51和48）中规中矩，但ADR仅111.4、ACS低于角色均值5.4%，暴露出输出转化不足的问题。他的首杀率极低（0.12）而首死率偏高（0.16），说明突破风格偏保守；17%的残局胜率也远低于合格线，关键时刻难堪大任。虽然生存能力尚可（54），但缺乏决斗者应有的侵略性，无法为XLG撕开突破口。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "Autumn",
@@ -1261,8 +1261,8 @@ window.VALORANT_DATA = {
         "kast": "+1.3%",
         "clutch_pct": "+72.2%"
       },
-      "summary_en": "Autumn’s stat line paints a clear picture of a jack-of-all-trades duelist who lacks the explosive entry power expected of the role. His ACS and ADR sit nearly 10% below the role average, and his FKPR of 0.08 is a staggering 35% lower than his peers, indicating he rarely wins the first duel or creates space for his team. While his KAST is slightly above average and his survivability score of 65 suggests he stays alive to provide utility, his low clutch conversion (20%) and entry score of 45 mean he struggles to turn that survival into round-winning impact.",
-      "summary_zh": "Autumn的數據顯示他是一位全面型決鬥者，但缺乏該位置所需的爆發性突破能力。他的ACS和ADR比角色平均值低約10%，而0.08的首殺率更是落後同位置選手35%，這意味他很少能贏下第一波對槍或為團隊創造空間。雖然他的KAST略高於平均，生存能力分數65也說明他常能活下來提供戰術價值，但僅20%的殘局勝率和45分的突破評分，都證明他難以將存活轉化為真正的回合勝利。」"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "Nicc",
@@ -1309,8 +1309,8 @@ window.VALORANT_DATA = {
         "kast": "-17.5%",
         "clutch_pct": "+129.6%"
       },
-      "summary_en": "Nicc's statistical profile is deeply concerning for an Initiator, as he posts a 0.77 K/D and a KAST of just 56.0%, both well below role average. His Firepower (38) and Teamplay (29) scores are critically low, and a FKPR of 0.00 indicates he never generates first-contact advantages for DRG. While his Clutch score is average, the complete lack of entry impact and survivability makes him a clear liability on the roster.",
-      "summary_zh": "Nicc作为DRG的先锋位选手，数据表现非常堪忧：0.77的K/D和仅56.0%的KAST均远低于角色平均水平。他的火力（38分）和团队配合（29分）评分极低，首杀率（FKPR）为0.00意味着他几乎无法为队伍创造开局优势。虽然残局能力尚可，但缺乏生存能力和突破贡献使他成为队伍明显的短板。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "vo0kashu",
@@ -1357,8 +1357,8 @@ window.VALORANT_DATA = {
         "kast": "-5.3%",
         "clutch_pct": "-100.0%"
       },
-      "summary_en": "vo0kashu is a quintessential team-first Sentinel, ranking 76th percentile in Teamplay while posting a solid +5.7% ADR above role average, indicating he consistently trades damage for map control. However, his alarming 0.66 K/D and 62.0% KAST suggest severe survivability issues, as he fails to stay alive long enough to anchor sites or support retakes. With a 0.0% clutch rate and bottom-tier FKPR, he is clearly not a high-impact solo player, but his utility usage and positioning likely enable his teammates to thrive.",
-      "summary_zh": "vo0kashu是典型的团队型哨卫，团队协作评分高达76百分位，ADR比同位置平均水平高出5.7%，说明他始终在用伤害换取地图控制。但0.66的K/D和62.0%的KAST暴露了严重的生存问题——他往往过早阵亡，无法有效守点或支援回防。0%的残局胜率和垫底的先手击杀率表明他不是高影响力的单人选手，但他的道具运用和站位很可能为队友创造了发挥空间。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "WsLeo",
@@ -1404,8 +1404,8 @@ window.VALORANT_DATA = {
         "kast": "+3.1%",
         "clutch_pct": "-100.0%"
       },
-      "summary_en": "WsLeo demonstrates strong Initiator fundamentals, posting ACS and ADR roughly 11% above the role average, which indicates he consistently generates value through utility usage and smart positioning rather than raw fragging. However, his 0.00 clutch percentage and 0.76 K/D point to an inability to convert high-pressure rounds, which is a notable weakness for a team player who should stabilize chaotic post-plant situations. His FKPR is 44.6% above average, showing excellent first-contact support, but his 83 Teamplay score is the standout—he enables his duelists effectively while keeping his survivability at a solid 53.",
-      "summary_zh": "WsLeo 展现了扎实的先锋位基本功，ACS 和 ADR 比同位置平均水平高出约 11%，说明他更多依靠技能使用和聪明走位而非硬拼枪法来持续创造价值。但他 0.00% 的残局胜率和 0.76 的 K/D 暴露出高压回合的转化能力不足，这对一个本应稳定残局局势的团队型选手来说是明显短板。他 44.6% 高于平均的首杀参与率说明前点支援非常到位，而 83 分的团队协作才是他的核心亮点——既能有效为决斗者创造机会，又保持住了 53 分的生存能力。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "Lysoar",
@@ -1452,8 +1452,8 @@ window.VALORANT_DATA = {
         "kast": "+5.7%",
         "clutch_pct": "+29.9%"
       },
-      "summary_en": "Lysoar is a textbook Enabler Controller, with a Teamplay score of 92 that heavily outweighs his modest Firepower of 45. His KAST of 72.0% is 5.7% above the role average, proving he consistently provides value through utility and positioning rather than frags. While his low ACS and K/D may look weak on paper, his high Survivability and minimal FKPR/FDPR reflect a disciplined playstyle focused on enabling teammates, making him a reliable anchor for XLG's system.",
-      "summary_zh": "Lysoar是典型的‘赋能型’控场选手，92分的团队协作远超45分的火力输出，KAST高达72.0%，比同位置均值高出5.7%，说明他主要通过技能和站位为团队创造价值。虽然ACS和K/D数据看似平庸，但高生存率与极低的先杀/先死数据，恰恰体现了他以团队为先、稳扎稳打的风格，是XLG体系里可靠的战术基石。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "Rarga",
@@ -1500,8 +1500,8 @@ window.VALORANT_DATA = {
         "kast": "+11.9%",
         "clutch_pct": "+184.1%"
       },
-      "summary_en": "Rarga's 0.81 K/D and 160 ACS are significantly below the Duelist average, indicating he struggles to generate the primary firepower expected from his role. However, his 74% KAST and 68 Teamplay score are standout positives, revealing he contributes effectively to round wins through utility usage and coordinated team actions rather than raw fragging. While his entry and clutch metrics are below par, his high survivability (67) confirms he plays a disciplined, support-oriented style that sacrifices personal stats for team structure.",
-      "summary_zh": "Rarga的0.81 K/D和160 ACS远低于决斗者平均水平，说明他在本职的火力输出上明显乏力。但74%的KAST和68的团队协作评分是他的亮点——他通过道具配合和团队联动帮助队伍拿分，而非依赖个人击杀。尽管突进和残局数据不突出，但67的生存能力证明他打法谨慎，为了团队结构牺牲了个人数据。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "xavi8k",
@@ -1548,8 +1548,8 @@ window.VALORANT_DATA = {
         "kast": "-0.1%",
         "clutch_pct": "-100.0%"
       },
-      "summary_en": "xavi8k’s 78 Teamplay score and 66 Survivability align well with his Controller role, but his firepower metrics are critically low—ACS 137 and ADR 91.7 both sit nearly 20% below the role average. His 0.38 APR shows some utility value, yet the 0.76 K/D and 0.0% clutch rate highlight an inability to convert engagements or close rounds, making him a liability in direct fights. For GE to succeed, xavi8k must improve his spatial awareness and trading efficiency to compensate for his weak aim duels.",
-      "summary_zh": "xavi8k的团队协作评分78和生存能力66符合控场者定位，但火力数据严重不足——ACS仅137、ADR仅91.7，均低于同位置平均水平近20%。虽然0.38的助攻率体现一定战术价值，但0.76的K/D与0%的残局胜率暴露了他难以在正面交火中存活或终结比赛。GE若想突破，xavi8k必须提升空间感知与补枪效率，以弥补枪法短板带来的劣势。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "Killua",
@@ -1595,8 +1595,8 @@ window.VALORANT_DATA = {
         "kast": "-17.5%",
         "clutch_pct": "-100.0%"
       },
-      "summary_en": "Killua's numbers are significantly below role average across all dimensions. Whether matchup difficulty or form, the stats don't tell a flattering story this tournament.",
-      "summary_zh": "Killua在本届赛事中各项关键数据均明显低于同位置平均水平，无论是对阵强队、打法不契合还是状态欠佳，本届数据都难以给出正面评价。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "mada",
@@ -1644,8 +1644,8 @@ window.VALORANT_DATA = {
         "kast": "-4.8%",
         "clutch_pct": "-100.0%"
       },
-      "summary_en": "Mada’s performance as a Duelist for NRG is defined by a high-risk, low-reward playstyle that fails to convert into consistent impact. While his +30% FKPR above role average shows proactive entry attempts, his 0.87 K/D and 179 ACS sit well below the tournament median, indicating he often loses the first engagement and fails to trade effectively. The 0.0% clutch rate and low survivability score confirm that when the team needs a round win, mada is rarely the solution, making him a liability rather than a difference-maker in his primary role.",
-      "summary_zh": "Mada作为NRG的决斗者，呈现出的是一种高风险低回报的打法，未能转化为稳定的赛场影响力。尽管他+30%的首杀率高于角色平均水平，展现出积极的进点意愿，但0.87的K/D和179的ACS明显低于赛事中位数，说明他经常输掉第一波对枪且无法有效完成补枪。0.0%的残局胜率与低生存能力进一步证实，当队伍需要拿下关键回合时，mada几乎从不站出来，这使他在本职角色中成为短板而非胜负手。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "Crws",
@@ -1692,8 +1692,8 @@ window.VALORANT_DATA = {
         "kast": "-17.8%",
         "clutch_pct": "+42.9%"
       },
-      "summary_en": "Crws is a dedicated team-first Controller whose value comes from utility usage rather than fragging, as reflected in his bottom-tier Firepower (20) and K/D (0.52). His standout Teamplay score (62) suggests strong map awareness and support habits, but a KAST of 56.0% and FKPR of 0.03 indicate he struggles to stay alive and secure early advantages, which limits his overall impact even in a supportive role.",
-      "summary_zh": "Crws 是一位以团队为先的控场者，他的价值源于道具运用而非击杀——20分的火力和0.52的K/D都印证了这一点。62分的团队配合分说明他具备不错的全局观和支援意识，但56.0%的KAST和0.03的首杀率暴露了他在存活率和前期对抗上的短板，即便作为控场者，这样的生存能力也拖累了整体贡献。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "PatMen",
@@ -1741,8 +1741,8 @@ window.VALORANT_DATA = {
         "kast": "-8.7%",
         "clutch_pct": "-100.0%"
       },
-      "summary_en": "PatMen’s statistical profile is alarming for an Initiator, as his KAST of 62.0% and ADR of 110.1 are well below tournament averages, indicating he is consistently failing to enable or survive in team engagements. While his FKPR is slightly above the role average, his abysmal 0.65 K/D and 0.0% clutch rate suggest he is a liability in post-plant and trade scenarios, making him a clear dead weight on GE’s roster.",
-      "summary_zh": "PatMen的数据对一名先锋位来说非常危险：62.0%的KAST和110.1的ADR都远低于赛事平均水平，说明他既无法有效协助队友，也难以在团队交火中存活。虽然他的首杀率略高于角色均值，但0.65的K/D和0.0%的残局胜率证明他在下包后和补枪环节完全是队伍短板，是GE阵容中名副其实的拖累点。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "SpiritZ1",
@@ -1789,8 +1789,8 @@ window.VALORANT_DATA = {
         "kast": "-24.4%",
         "clutch_pct": "-100.0%"
       },
-      "summary_en": "SpiritZ1's performance as a duelist for DRG is critically below standard, with an ACS of 153 and ADR of 105.9 both significantly lagging role averages. His abysmal 0.53 K/D, 50.0% KAST, and especially the 0.06 first-kill rate highlight a fundamental failure to execute entry responsibilities, while a 0.0% clutch rate and 0.09 assists per round underscore minimal impact in any phase of play.",
-      "summary_zh": "SpiritZ1作为DRG的决斗者，表现严重低于职业标准，ACS仅153、ADR 105.9均远低于角色平均水平。他0.53的K/D、50.0%的KAST以及低至0.06的首杀率，暴露出在突破职责上的根本性失败，而0.0%的残局胜率和0.09的场均助攻更显示他在比赛任何阶段都缺乏影响力。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "Leviathan",
@@ -1837,8 +1837,8 @@ window.VALORANT_DATA = {
         "kast": "-35.9%",
         "clutch_pct": "-100.0%"
       },
-      "summary_en": "Leviathan’s performance as a Sentinel is critically below standard, with a KAST of 42.0% and a K/D of 0.48 indicating he is consistently the first to die without providing value to his team. His Survivability score of 2 out of 100 directly undermines his primary role responsibility, as a Sentinel must anchor sites and trade effectively, yet his 0.06 FKPR and 0.0% clutch rate leave FS without a stable defensive backbone. Simply put, Leviathan is not holding his weight—his low firepower and inability to survive make him a liability that opponents can exploit round after round.",
-      "summary_zh": "Leviathan 作为哨位选手，其表现严重低于角色标准——KAST仅42.0%、K/D 0.48，说明他频繁率先阵亡且无法为团队创造价值。他2分的生存能力评分（满分100）直接违背了哨位的核心职责：稳固守点和有效补枪，而0.06的首杀率和0.0%的残局胜率让FS缺乏可靠的防守支点。简而言之，Leviathan 不仅火力不足，更因存活能力极差成为对手每回合的突破口，是队伍当前最明显的短板。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "Flex1n",
@@ -1885,8 +1885,8 @@ window.VALORANT_DATA = {
         "kast": "-31.0%",
         "clutch_pct": "-100.0%"
       },
-      "summary_en": "Flex1n's statistical profile is among the weakest in the tournament, with a K/D of 0.29 and ACS of 92 placing him well below the Controller average. His Teamplay score of 37 and KAST of 47% indicate a severe lack of impact in primary role responsibilities, as he consistently fails to survive long enough to execute utility or support teammates. While low Entry and Clutch figures are expected for a Controller, his abysmal Firepower and Survivability scores directly undermine his ability to fulfill the team's strategic needs.",
-      "summary_zh": "Flex1n的数据堪称赛事垫底级别，0.29的K/D和92的ACS远低于控场者平均水平。作为核心职责的团队协作（37分）与生存能力（8分）严重不合格，47%的KAST意味着他往往过早阵亡而无法完成道具部署或队友支援。虽然控场者不要求突入和残局能力，但极低的火力和生存数据已直接导致队伍战术体系崩溃。"
+      "summary_en": "",
+      "summary_zh": ""
     },
     {
       "name": "JitBoyS",
@@ -1932,8 +1932,8 @@ window.VALORANT_DATA = {
         "kast": "-33.5%",
         "clutch_pct": "-100.0%"
       },
-      "summary_en": "JitBoyS’s performance as a Duelist is critically below standard, with an ACS of 92 and ADR of 69.2 ranking 54.3% and 46.8% below role average, respectively. His Firepower score of 3 and Entry score of 13 highlight an inability to secure opening engagements or generate damage, while a KAST of 44.0% reflects minimal consistent impact. These numbers indicate a fundamental failure in primary responsibilities, making him a clear liability for FS.",
-      "summary_zh": "JitBoyS作为决斗者的表现严重低于标准，ACS仅92、ADR仅69.2，分别比角色平均值低54.3%和46.8%。Firepower评分3和Entry评分13凸显他无法赢下首枪或造成有效伤害，而44.0%的KAST说明他几乎无法持续发挥作用。这些数据表明他在核心职责上完全失职，是FS队内的明显短板。"
+      "summary_en": "",
+      "summary_zh": ""
     }
   ]
 };

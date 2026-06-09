@@ -1,3 +1,5 @@
+config.py
+api_config.js
 __pycache__/
 *.pyc
 .DS_Store

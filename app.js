@@ -6,6 +6,53 @@ let sortKey = 'acs';
 let sortDir = 'desc';
 let modalRadarChart = null;
 let cmpRadarChart = null;
+const summaryCache = new Map();   // player name → { text, textZh }
+
+// ── Role context for AI prompt ─────────────────────────────────────────────
+const ROLE_CONTEXT = {
+  'Duelist':    'As a Duelist, Firepower and Entry are primary responsibilities. Clutch and Teamplay are secondary.',
+  'Initiator':  'As an Initiator, Teamplay and Survivability are the primary job. Entry is secondary.',
+  'Controller': 'As a Controller, Teamplay and Survivability are primary. Low Entry and Clutch are EXPECTED — do NOT criticize them.',
+  'Sentinel':   'As a Sentinel, Survivability and Teamplay are primary. Entry is NOT expected to be high — do not criticize it.',
+  'Unknown':    '',
+};
+
+// ── Fallback templates (used when API unavailable) ─────────────────────────
+const EN_TEMPLATES = {
+  'First Blood Hunter':  n => `${n} is a relentless first-blood specialist who consistently wins opening duels and shifts map control before most players have fired a shot.`,
+  'Calculated Risk':     n => `${n} approaches entry with tactical aggression — not reckless, not passive — generating consistent pressure while keeping risk manageable.`,
+  'Glass Cannon':        n => `${n} loves to take the first fight but hasn't converted that aggression into consistent round wins. High risk, inconsistent reward.`,
+  'Silent Assassin':     n => `${n} is a high-efficiency carry: elite damage output, strong K/D, and the ability to close rounds without needing the highlight reel.`,
+  'Reliable Fragger':    n => `${n} is a steady, dependable damage dealer — not flashy, but consistently present on the scoreboard when it matters.`,
+  'Misfiring':           n => `${n} has the tools to carry but the numbers show inconsistency. Some rounds dominant, others absent — ceiling is higher with more stability.`,
+  'Comeback King':       n => `${n} is the player opponents fear in 1vX situations. Exceptional clutch rate signals elite composure and the ability to convert rounds that should be lost.`,
+  'Pressure Player':     n => `${n} shows up when the round is on the line. Reliable under pressure, with the composure to stay calm in late-round situations.`,
+  'Lucky Shot':          n => `${n} has had standout clutch moments this tournament, though the sample is limited. A few more performances like those would change the narrative.`,
+  'The Enabler':         n => `${n} makes teammates better. High assist rates and exceptional round participation show a player who creates opportunities and keeps rounds alive.`,
+  'Team Player':         n => `${n} is a reliable team-first player whose consistent participation and assist numbers show clear role understanding and disciplined execution.`,
+  'Role Question Mark':  n => `${n}'s numbers sit below role average without a clear standout category. Could reflect tough matchups, strategic sacrifice, or an off tournament.`,
+  'Swiss Army Knife':    n => `${n} is a complete player with no exploitable weakness — elite across firepower, entry, clutch, and teamplay.`,
+  'Jack of All Trades':  n => `${n} is well-rounded without dominating any single category. Versatile and adaptable — no obvious weak point for opponents to target.`,
+  'Dead Weight':         n => `${n}'s numbers are significantly below role average across all dimensions. Whether matchup difficulty or form, the stats don't tell a flattering story this tournament.`,
+};
+
+const ZH_TEMPLATES = {
+  'First Blood Hunter':  n => `${n}是本届赛事最具威胁性的开团选手之一，能够稳定赢得前期对枪，在大多数人开枪之前便已掌控地图节奏。`,
+  'Calculated Risk':     n => `${n}的打法介于激进与保守之间，以可控风险换取稳定推进空间，即便数据不亮眼，对团队贡献切实存在。`,
+  'Glass Cannon':        n => `${n}热衷于主动发起对枪，但尚未将进攻性转化为稳定回合胜率。高风险、高波动。`,
+  'Silent Assassin':     n => `${n}是高效carry选手：顶级伤害输出、稳定K/D，不需要高光时刻便能锁定回合。`,
+  'Reliable Fragger':    n => `${n}是稳定可靠的输出手，不花哨，但在关键时刻始终出现在计分板上。`,
+  'Misfiring':           n => `${n}具备核心carry的实力，但数据显示发挥不稳定，某些回合强势，另一些几乎消失。`,
+  'Comeback King':       n => `${n}是对手在1vX局面中最不想遇到的对手，超高clutch胜率体现了顶级心态与机械实力。`,
+  'Pressure Player':     n => `关键回合来临时，${n}会站出来，在压力时刻保持稳定，为团队带来切实价值。`,
+  'Lucky Shot':          n => `${n}在本届赛事中有过几次亮眼的clutch时刻，但样本有限，还不足以断定为稳定强项。`,
+  'The Enabler':         n => `${n}能让队友变得更强，高助攻数与超高回合参与率体现了创造机会的价值。`,
+  'Team Player':         n => `${n}是可靠的团队型选手，稳定的回合参与度和扎实的助攻数说明他清楚自己的定位。`,
+  'Role Question Mark':  n => `${n}各维度数据均低于同位置平均水平，可能是对阵强队、战术牺牲，也可能只是本届状态欠佳。`,
+  'Swiss Army Knife':    n => `${n}是无懈可击的全能型选手，火力、突破、clutch与团队协作均处于顶级水准。`,
+  'Jack of All Trades':  n => `${n}全面均衡，但没有哪个维度形成统治力，稳定性是目前最大的优势。`,
+  'Dead Weight':         n => `${n}在本届赛事中各项关键数据均明显低于同位置平均水平，本届数据难以给出正面评价。`,
+};
 
 // ── Archetype display map ──────────────────────────────────────────────────
 const ARCHETYPE_DISPLAY = {
@@ -191,7 +238,7 @@ function showModal(p) {
     { key: 'clutch_pct', label: 'Clutch%', val: fmt(p.clutch_pct, 1) + '%' },
   ];
 
-  const summaryHTML = generateSummary(p);
+  const swData = getStrengthsWeaknesses(p);
 
   box.innerHTML = `
     <!-- Header -->
@@ -218,17 +265,17 @@ function showModal(p) {
         <canvas id="modal-radar-canvas" width="380" height="380"></canvas>
       </div>
       <div class="modal-right-col">
-        <div class="modal-summary-text">${summaryHTML.text}</div>
-        <div class="modal-summary-divider"></div>
-        <div class="modal-summary-text modal-summary-zh">${summaryHTML.textZh}</div>
+        <div id="modal-summary-area">
+          <div class="modal-summary-loading">Analyzing ${esc(p.name)}…</div>
+        </div>
         <div class="modal-strengths-row">
           <div class="modal-strengths-block">
             <div class="modal-label">Strengths</div>
-            <ul>${summaryHTML.strengths.map(s => `<li>${esc(s)}</li>`).join('')}</ul>
+            <ul>${swData.strengths.map(s => `<li>${esc(s)}</li>`).join('')}</ul>
           </div>
           <div class="modal-strengths-block">
             <div class="modal-label">Weaknesses</div>
-            <ul>${summaryHTML.weaknesses.map(s => `<li>${esc(s)}</li>`).join('')}</ul>
+            <ul>${swData.weaknesses.map(s => `<li>${esc(s)}</li>`).join('')}</ul>
           </div>
         </div>
         <div>
@@ -322,6 +369,9 @@ function showModal(p) {
       }
     });
   });
+
+  // Trigger async AI summary fetch after modal is visible
+  fetchAISummary(p);
 }
 
 function closeModal() {
@@ -329,19 +379,105 @@ function closeModal() {
   if (modalRadarChart) { modalRadarChart.destroy(); modalRadarChart = null; }
 }
 
-// ── Summary (reads from data.js, generated by scraper + DeepSeek API) ──────
+// ── On-demand AI Summary ───────────────────────────────────────────────────
+async function fetchAISummary(p) {
+  // Serve from cache if available
+  if (summaryCache.has(p.name)) {
+    renderSummaryInModal(p, summaryCache.get(p.name));
+    return;
+  }
+
+  const key = window.DEEPSEEK_API_KEY;
+  if (!key) {
+    renderSummaryInModal(p, {
+      text: EN_TEMPLATES[p.archetype]?.(p.name) || '',
+      textZh: ZH_TEMPLATES[p.archetype]?.(p.name) || '',
+    });
+    return;
+  }
+
+  const vs = p.vs_role || {};
+  const roleCtx = ROLE_CONTEXT[p.role] || '';
+  const prompt = `You are a professional Valorant esports analyst. Write a concise player analysis for ${p.name}.
+
+Player: ${p.name} | Team: ${p.team} | Role: ${p.role} | Archetype: ${p.archetype}
+
+Stats:
+- ACS: ${fmt(p.acs)} | ADR: ${fmt(p.adr,1)} | K/D: ${fmt(p.kd,2)} | KAST: ${fmt(p.kast,1)}%
+- FKPR: ${fmt(p.fkpr,2)} | FDPR: ${fmt(p.fdpr,2)} | APR: ${fmt(p.apr,2)} | Clutch%: ${fmt(p.clutch_pct,1)}%
+
+Strength Scores (0-100, relative to tournament field):
+Firepower ${Math.round(p.firepower||0)} | Entry ${Math.round(p.entry||0)} | Survivability ${Math.round(p.survivability||0)} | Clutch ${Math.round(p.clutch||0)} | Teamplay ${Math.round(p.teamplay||0)}
+
+vs Role Average: ACS ${vs.acs||'—'} | ADR ${vs.adr||'—'} | KAST ${vs.kast||'—'} | FKPR ${vs.fkpr||'—'}
+
+Role context: ${roleCtx}
+
+Return ONLY valid JSON: {"en": "2-3 sentence English analysis.", "zh": "2-3句中文分析。"}
+Requirements:
+- English: professional analyst tone, reference specific stats, explain WHY this player stands out or falls short
+- Chinese: same content, natural Chinese, mention player name
+- Respect role context — do NOT criticize dimensions not primary for this role
+- Do NOT use markdown, no text outside the JSON`;
+
+  try {
+    const resp = await fetch('https://api.deepseek.com/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${key}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'deepseek-chat',
+        messages: [{ role: 'user', content: prompt }],
+        temperature: 0.7,
+        max_tokens: 400,
+      }),
+    });
+    const data = await resp.json();
+    let content = data.choices[0].message.content.trim();
+    if (content.startsWith('```')) {
+      content = content.replace(/^```[a-z]*\n?/, '').replace(/\n?```$/, '');
+    }
+    const result = JSON.parse(content);
+    if (result.en && result.zh) {
+      const summary = { text: result.en, textZh: result.zh };
+      summaryCache.set(p.name, summary);
+      renderSummaryInModal(p, summary);
+      return;
+    }
+  } catch (e) {
+    console.warn('AI summary failed:', e);
+  }
+
+  // Fallback on any error
+  renderSummaryInModal(p, {
+    text: EN_TEMPLATES[p.archetype]?.(p.name) || '',
+    textZh: ZH_TEMPLATES[p.archetype]?.(p.name) || '',
+  });
+}
+
+function renderSummaryInModal(p, { text, textZh }) {
+  const area = document.getElementById('modal-summary-area');
+  if (!area) return;
+  area.innerHTML = `
+    <div class="modal-summary-text">${esc(text)}</div>
+    <div class="modal-summary-divider"></div>
+    <div class="modal-summary-text modal-summary-zh">${esc(textZh)}</div>
+  `;
+}
+
+// ── Strengths / Weaknesses (role-filtered) ─────────────────────────────────
 const SCORE_NAMES = ['firepower', 'entry', 'survivability', 'clutch', 'teamplay'];
 const SCORE_LABELS = { firepower: 'Firepower', entry: 'Entry', survivability: 'Survivability', clutch: 'Clutch', teamplay: 'Teamplay' };
 
-function generateSummary(p) {
+function getStrengthsWeaknesses(p) {
   const keyDims = p.role_key_dims || ['firepower', 'survivability', 'teamplay'];
   const keySorted = keyDims
     .map(k => ({ key: k, val: p[k] || 0 }))
     .sort((a, b) => b.val - a.val);
 
   return {
-    text:      p.summary_en || '',
-    textZh:    p.summary_zh || '',
     strengths:  keySorted.slice(0, 2).map(s => SCORE_LABELS[s.key]),
     weaknesses: keySorted.slice(-1).map(s => SCORE_LABELS[s.key]),
   };
