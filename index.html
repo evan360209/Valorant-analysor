@@ -9,6 +9,13 @@
 </head>
 <body>
 
+<!-- ── Modal Overlay ── -->
+<div id="modal-overlay">
+  <div id="modal-box">
+    <!-- filled dynamically by showModal() in app.js -->
+  </div>
+</div>
+
 <!-- ── Header ── -->
 <header>
   <div class="header-title">
@@ -63,76 +70,13 @@
         </tbody>
       </table>
     </div>
-  </section>
-
-  <!-- ── Player Profile ── -->
-  <section class="card" id="profile-section">
-    <div class="card-header">
-      <h2>Player Profile</h2>
-    </div>
-    <div class="profile-grid">
-
-      <!-- Left column: identity + scores + radar -->
-      <div class="profile-left">
-
-        <!-- Identity -->
-        <div class="player-identity">
-          <div class="p-name" id="profile-name">—</div>
-          <div class="p-meta">
-            <span id="profile-team" style="color:var(--text-muted);font-size:13px"></span>
-            <span class="role-badge" id="profile-role-badge"></span>
-          </div>
-          <div style="margin-top:4px">
-            <span class="archetype-badge" id="profile-archetype"></span>
-          </div>
-          <div style="font-size:12px;color:var(--text-muted);margin-top:6px">
-            <strong style="color:var(--text)">Agents:</strong> <span id="profile-agents"></span>
-          </div>
-        </div>
-
-        <!-- Radar chart -->
-        <div>
-          <div class="section-title">Skill Radar</div>
-          <div class="chart-wrap">
-            <canvas id="radar-canvas" width="280" height="280"></canvas>
-          </div>
-        </div>
-
-        <!-- Strength bars -->
-        <div class="strength-bars">
-          <div class="section-title">Strength Scores</div>
-          <div id="strength-bars"></div>
-        </div>
-
-      </div>
-
-      <!-- Right column: stats + benchmark + summary -->
-      <div class="profile-right">
-
-        <!-- Raw stats -->
-        <div>
-          <div class="section-title">Statistics</div>
-          <div class="stats-detail-grid" id="profile-stats-grid"></div>
-        </div>
-
-        <!-- Role benchmark -->
-        <div>
-          <div class="section-title">vs Role Average &mdash; <span id="benchmark-role" style="text-transform:none;letter-spacing:0;font-weight:600;color:var(--text)"></span></div>
-          <div class="benchmark-grid" id="benchmark-grid"></div>
-        </div>
-
-        <!-- AI Summary -->
-        <div>
-          <div class="section-title">Player Analysis</div>
-          <div class="ai-summary" id="ai-summary"></div>
-        </div>
-
-      </div>
+    <div style="padding:10px 16px;font-size:12px;color:var(--text-muted);border-top:1px solid var(--border)">
+      Click any row to view player profile
     </div>
   </section>
 
   <!-- ── Player Comparison ── -->
-  <section class="card" id="comparison-section">
+  <section class="card" id="comparison-section" style="display:none">
     <div class="card-header">
       <h2>Player Comparison</h2>
     </div>
@@ -164,18 +108,18 @@
       </div>
 
       <!-- Comparison radar -->
-      <div class="comparison-radar-wrap" style="flex:0 0 320px">
-        <div style="width:280px">
-          <canvas id="cmp-radar-canvas" width="280" height="280"></canvas>
+      <div class="comparison-radar-wrap" style="flex:0 0 340px">
+        <div style="width:300px">
+          <canvas id="cmp-radar-canvas" width="300" height="300"></canvas>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- Comparison trigger hint -->
-  <div style="text-align:center;color:var(--text-muted);font-size:12px;padding:4px 0 12px">
-    Select two players in the <strong style="color:var(--text)">Player Comparison</strong> section above to compare them side by side.
+  <!-- Comparison hint -->
+  <div style="text-align:center;color:var(--text-muted);font-size:12px;padding:4px 0 20px">
+    Select two players in the <strong style="color:var(--text)">Player Comparison</strong> dropdowns above to compare side by side.
   </div>
 
 </main>

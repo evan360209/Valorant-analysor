@@ -577,6 +577,173 @@ tbody td {
   margin-bottom: 12px;
 }
 
+/* ── Modal ── */
+#modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.80);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+#modal-box {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 980px;
+  max-height: 92vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Modal header */
+.modal-header {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.modal-header-left { display: flex; flex-direction: column; gap: 8px; }
+
+.modal-player-name {
+  font-size: 28px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: .5px;
+  line-height: 1.1;
+}
+
+.modal-player-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.modal-archetype-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.modal-archetype-badge {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #fff;
+}
+
+.modal-archetype-sub {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.modal-close-btn {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background .12s, color .12s;
+}
+.modal-close-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* Modal body — two-column top section */
+.modal-body-top {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+@media (max-width: 860px) {
+  .modal-body-top { grid-template-columns: 1fr; }
+}
+
+.modal-radar-col {
+  padding: 24px 20px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-radar-col canvas {
+  width: 380px !important;
+  height: 380px !important;
+}
+
+.modal-right-col {
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Summary text — prominent, at the top of right col */
+.modal-summary-text {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+.modal-strengths-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.modal-strengths-block { display: flex; flex-direction: column; gap: 4px; }
+
+.modal-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.modal-strengths-block ul {
+  padding-left: 14px;
+  margin: 0;
+}
+
+.modal-strengths-block li {
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+/* Modal bottom section */
+.modal-body-bottom {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }

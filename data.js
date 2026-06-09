@@ -1,5 +1,5 @@
 window.VALORANT_DATA = {
-  "updated_at": "2026-06-09 11:23:03",
+  "updated_at": "2026-06-09 11:56:09",
   "source": "https://www.vlr.gg/event/stats/2765/valorant-masters-london-2026",
   "players": [
     {
@@ -28,7 +28,7 @@ window.VALORANT_DATA = {
       "survivability": 50.5,
       "clutch": 46.8,
       "teamplay": 51.0,
-      "archetype": "Smart Carry",
+      "archetype": "Silent Assassin",
       "role_avg": {
         "acs": 199.75,
         "adr": 129.94,
@@ -69,7 +69,7 @@ window.VALORANT_DATA = {
       "survivability": 67.4,
       "clutch": 0.0,
       "teamplay": 51.3,
-      "archetype": "Team Facilitator",
+      "archetype": "First Blood Hunter",
       "role_avg": {
         "acs": 202.41,
         "adr": 130.09,
@@ -111,7 +111,7 @@ window.VALORANT_DATA = {
       "survivability": 73.9,
       "clutch": 11.4,
       "teamplay": 55.3,
-      "archetype": "Team Facilitator",
+      "archetype": "First Blood Hunter",
       "role_avg": {
         "acs": 171.9,
         "adr": 113.15,
@@ -153,7 +153,7 @@ window.VALORANT_DATA = {
       "survivability": 62.6,
       "clutch": 31.0,
       "teamplay": 55.3,
-      "archetype": "Team Facilitator",
+      "archetype": "Swiss Army Knife",
       "role_avg": {
         "acs": 171.9,
         "adr": 113.15,
@@ -195,7 +195,7 @@ window.VALORANT_DATA = {
       "survivability": 74.2,
       "clutch": 41.2,
       "teamplay": 64.0,
-      "archetype": "Team Facilitator",
+      "archetype": "Swiss Army Knife",
       "role_avg": {
         "acs": 171.9,
         "adr": 113.15,
@@ -237,7 +237,7 @@ window.VALORANT_DATA = {
       "survivability": 56.4,
       "clutch": 82.0,
       "teamplay": 31.0,
-      "archetype": "Clutch Specialist",
+      "archetype": "Comeback King",
       "role_avg": {
         "acs": 202.41,
         "adr": 130.09,
@@ -279,7 +279,7 @@ window.VALORANT_DATA = {
       "survivability": 62.6,
       "clutch": 26.8,
       "teamplay": 46.3,
-      "archetype": "Team Facilitator",
+      "archetype": "First Blood Hunter",
       "role_avg": {
         "acs": 202.41,
         "adr": 130.09,
@@ -321,7 +321,7 @@ window.VALORANT_DATA = {
       "survivability": 59.3,
       "clutch": 22.6,
       "teamplay": 49.7,
-      "archetype": "Team Facilitator",
+      "archetype": "Calculated Risk",
       "role_avg": {
         "acs": 202.41,
         "adr": 130.09,
@@ -363,7 +363,7 @@ window.VALORANT_DATA = {
       "survivability": 78.0,
       "clutch": 44.0,
       "teamplay": 52.0,
-      "archetype": "Team Facilitator",
+      "archetype": "Swiss Army Knife",
       "role_avg": {
         "acs": 199.75,
         "adr": 129.94,
@@ -404,7 +404,7 @@ window.VALORANT_DATA = {
       "survivability": 86.7,
       "clutch": 45.6,
       "teamplay": 55.3,
-      "archetype": "Team Facilitator",
+      "archetype": "Swiss Army Knife",
       "role_avg": {
         "acs": 199.75,
         "adr": 129.94,
@@ -446,7 +446,7 @@ window.VALORANT_DATA = {
       "survivability": 49.0,
       "clutch": 0.0,
       "teamplay": 35.3,
-      "archetype": "Team Facilitator",
+      "archetype": "Calculated Risk",
       "role_avg": {
         "acs": 202.41,
         "adr": 130.09,
@@ -488,7 +488,7 @@ window.VALORANT_DATA = {
       "survivability": 72.0,
       "clutch": 31.2,
       "teamplay": 51.3,
-      "archetype": "Team Facilitator",
+      "archetype": "Jack of All Trades",
       "role_avg": {
         "acs": 171.9,
         "adr": 113.15,
@@ -528,7 +528,7 @@ window.VALORANT_DATA = {
       "survivability": 33.2,
       "clutch": 0.0,
       "teamplay": 34.0,
-      "archetype": "Smart Carry",
+      "archetype": "Reliable Fragger",
       "role_avg": {
         "acs": 202.41,
         "adr": 130.09,
@@ -570,7 +570,7 @@ window.VALORANT_DATA = {
       "survivability": 63.4,
       "clutch": 40.0,
       "teamplay": 50.3,
-      "archetype": "Team Facilitator",
+      "archetype": "Jack of All Trades",
       "role_avg": {
         "acs": 171.9,
         "adr": 113.15,
@@ -612,7 +612,7 @@ window.VALORANT_DATA = {
       "survivability": 77.1,
       "clutch": 21.2,
       "teamplay": 63.0,
-      "archetype": "Team Facilitator",
+      "archetype": "Jack of All Trades",
       "role_avg": {
         "acs": 172.33,
         "adr": 118.82,
@@ -653,7 +653,7 @@ window.VALORANT_DATA = {
       "survivability": 55.9,
       "clutch": 0.0,
       "teamplay": 39.3,
-      "archetype": "Team Facilitator",
+      "archetype": "Calculated Risk",
       "role_avg": {
         "acs": 199.75,
         "adr": 129.94,
@@ -695,7 +695,7 @@ window.VALORANT_DATA = {
       "survivability": 68.2,
       "clutch": 11.4,
       "teamplay": 51.3,
-      "archetype": "Team Facilitator",
+      "archetype": "Jack of All Trades",
       "role_avg": {
         "acs": 172.33,
         "adr": 118.82,
@@ -736,7 +736,7 @@ window.VALORANT_DATA = {
       "survivability": 51.9,
       "clutch": 0.0,
       "teamplay": 49.7,
-      "archetype": "Team Facilitator",
+      "archetype": "Calculated Risk",
       "role_avg": {
         "acs": 202.41,
         "adr": 130.09,
@@ -778,7 +778,7 @@ window.VALORANT_DATA = {
       "survivability": 69.4,
       "clutch": 41.0,
       "teamplay": 65.7,
-      "archetype": "Team Facilitator",
+      "archetype": "Swiss Army Knife",
       "role_avg": {
         "acs": 171.9,
         "adr": 113.15,
@@ -820,7 +820,7 @@ window.VALORANT_DATA = {
       "survivability": 54.5,
       "clutch": 21.2,
       "teamplay": 57.3,
-      "archetype": "Team Facilitator",
+      "archetype": "Team Player",
       "role_avg": {
         "acs": 172.33,
         "adr": 118.82,
@@ -861,7 +861,7 @@ window.VALORANT_DATA = {
       "survivability": 66.4,
       "clutch": 79.0,
       "teamplay": 43.0,
-      "archetype": "Clutch Specialist",
+      "archetype": "First Blood Hunter",
       "role_avg": {
         "acs": 199.75,
         "adr": 129.94,
@@ -901,7 +901,7 @@ window.VALORANT_DATA = {
       "survivability": 10.9,
       "clutch": 0.0,
       "teamplay": 6.0,
-      "archetype": "Aggressive Entry",
+      "archetype": "Dead Weight",
       "role_avg": {
         "acs": 199.75,
         "adr": 129.94,
@@ -943,7 +943,7 @@ window.VALORANT_DATA = {
       "survivability": 74.6,
       "clutch": 26.8,
       "teamplay": 70.3,
-      "archetype": "Team Facilitator",
+      "archetype": "Swiss Army Knife",
       "role_avg": {
         "acs": 172.33,
         "adr": 118.82,
@@ -984,7 +984,7 @@ window.VALORANT_DATA = {
       "survivability": 50.1,
       "clutch": 45.6,
       "teamplay": 58.7,
-      "archetype": "Team Facilitator",
+      "archetype": "Team Player",
       "role_avg": {
         "acs": 172.33,
         "adr": 118.82,
@@ -1025,7 +1025,7 @@ window.VALORANT_DATA = {
       "survivability": 43.5,
       "clutch": 26.8,
       "teamplay": 32.3,
-      "archetype": "Team Facilitator",
+      "archetype": "Jack of All Trades",
       "role_avg": {
         "acs": 202.41,
         "adr": 130.09,
@@ -1066,7 +1066,7 @@ window.VALORANT_DATA = {
       "survivability": 53.1,
       "clutch": 31.0,
       "teamplay": 37.0,
-      "archetype": "Team Facilitator",
+      "archetype": "Jack of All Trades",
       "role_avg": {
         "acs": 202.41,
         "adr": 130.09,
@@ -1107,7 +1107,7 @@ window.VALORANT_DATA = {
       "survivability": 20.0,
       "clutch": 41.0,
       "teamplay": 16.3,
-      "archetype": "Clutch Specialist",
+      "archetype": "Dead Weight",
       "role_avg": {
         "acs": 172.33,
         "adr": 118.82,
@@ -1148,7 +1148,7 @@ window.VALORANT_DATA = {
       "survivability": 26.4,
       "clutch": 0.0,
       "teamplay": 50.3,
-      "archetype": "Team Facilitator",
+      "archetype": "Jack of All Trades",
       "role_avg": {
         "acs": 199.75,
         "adr": 129.94,
@@ -1188,7 +1188,7 @@ window.VALORANT_DATA = {
       "survivability": 46.3,
       "clutch": 0.0,
       "teamplay": 60.0,
-      "archetype": "Team Facilitator",
+      "archetype": "Team Player",
       "role_avg": {
         "acs": 172.33,
         "adr": 118.82,
@@ -1229,7 +1229,7 @@ window.VALORANT_DATA = {
       "survivability": 52.5,
       "clutch": 31.0,
       "teamplay": 66.7,
-      "archetype": "Team Facilitator",
+      "archetype": "Team Player",
       "role_avg": {
         "acs": 171.9,
         "adr": 113.15,
@@ -1270,7 +1270,7 @@ window.VALORANT_DATA = {
       "survivability": 60.1,
       "clutch": 52.2,
       "teamplay": 53.3,
-      "archetype": "Team Facilitator",
+      "archetype": "Jack of All Trades",
       "role_avg": {
         "acs": 202.41,
         "adr": 130.09,
@@ -1311,7 +1311,7 @@ window.VALORANT_DATA = {
       "survivability": 54.9,
       "clutch": 0.0,
       "teamplay": 55.3,
-      "archetype": "Team Facilitator",
+      "archetype": "Jack of All Trades",
       "role_avg": {
         "acs": 171.9,
         "adr": 113.15,
@@ -1351,7 +1351,7 @@ window.VALORANT_DATA = {
       "survivability": 14.1,
       "clutch": 0.0,
       "teamplay": 9.3,
-      "archetype": "Aggressive Entry",
+      "archetype": "Dead Weight",
       "role_avg": {
         "acs": 172.33,
         "adr": 118.82,
@@ -1393,7 +1393,7 @@ window.VALORANT_DATA = {
       "survivability": 35.5,
       "clutch": 0.0,
       "teamplay": 30.7,
-      "archetype": "Team Facilitator",
+      "archetype": "Jack of All Trades",
       "role_avg": {
         "acs": 202.41,
         "adr": 130.09,
@@ -1434,7 +1434,7 @@ window.VALORANT_DATA = {
       "survivability": 17.0,
       "clutch": 36.8,
       "teamplay": 37.3,
-      "archetype": "Team Facilitator",
+      "archetype": "Dead Weight",
       "role_avg": {
         "acs": 171.9,
         "adr": 113.15,
@@ -1476,7 +1476,7 @@ window.VALORANT_DATA = {
       "survivability": 30.6,
       "clutch": 0.0,
       "teamplay": 26.3,
-      "archetype": "Team Facilitator",
+      "archetype": "Dead Weight",
       "role_avg": {
         "acs": 172.33,
         "adr": 118.82,
@@ -1517,7 +1517,7 @@ window.VALORANT_DATA = {
       "survivability": 10.1,
       "clutch": 0.0,
       "teamplay": 9.0,
-      "archetype": "Flexible Playmaker",
+      "archetype": "Dead Weight",
       "role_avg": {
         "acs": 202.41,
         "adr": 130.09,
@@ -1558,7 +1558,7 @@ window.VALORANT_DATA = {
       "survivability": 10.8,
       "clutch": 0.0,
       "teamplay": 17.0,
-      "archetype": "Flexible Playmaker",
+      "archetype": "Dead Weight",
       "role_avg": {
         "acs": 199.75,
         "adr": 129.94,
@@ -1599,7 +1599,7 @@ window.VALORANT_DATA = {
       "survivability": 9.6,
       "clutch": 0.0,
       "teamplay": 26.0,
-      "archetype": "Team Facilitator",
+      "archetype": "Dead Weight",
       "role_avg": {
         "acs": 171.9,
         "adr": 113.15,
@@ -1639,7 +1639,7 @@ window.VALORANT_DATA = {
       "survivability": 11.2,
       "clutch": 0.0,
       "teamplay": 6.0,
-      "archetype": "Flexible Playmaker",
+      "archetype": "Dead Weight",
       "role_avg": {
         "acs": 202.41,
         "adr": 130.09,

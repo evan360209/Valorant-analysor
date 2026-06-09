@@ -83,20 +83,43 @@ def classify_archetype(scores, p):
     fkpr = p.get("fkpr", 0)
     fdpr = p.get("fdpr", 0)
 
-    if en > 68 and fkpr > fdpr:
-        return "Aggressive Entry"
-    if fp > 70 and en < 60:
-        return "Smart Carry"
-    if cl > 68:
-        return "Clutch Specialist"
-    if tp > 68:
-        return "Team Facilitator"
-    all_scores = [fp, en, sv, cl, tp]
-    if max(all_scores) - min(all_scores) <= 20:
-        return "Flexible Playmaker"
-    # fallback: pick dominant score
-    best = max(zip([fp, en, sv, cl, tp], ["Smart Carry", "Aggressive Entry", "Team Facilitator", "Clutch Specialist", "Team Facilitator"]))
-    return best[1]
+    avg_score = (fp + en + sv + cl + tp) / 5
+    # Calibrated to real pro-player score distribution (range ~5–50, median ~35)
+    tier = "strong" if avg_score >= 43 else ("struggling" if avg_score < 22 else "average")
+
+    all_vals = [fp, en, sv, cl, tp]
+    max_val = max(all_vals)
+
+    # Style thresholds calibrated to actual percentile ranges
+    if en > 35 and fkpr > fdpr:
+        style = "entry"
+    elif cl > 45 and cl == max_val:
+        style = "clutch"
+    elif tp > 56 and tp == max_val:
+        style = "support"
+    elif fp > 38 and fp == max_val:
+        style = "carry"
+    else:
+        style = "balanced"
+
+    labels = {
+        ("entry",   "strong"):    "First Blood Hunter",
+        ("entry",   "average"):   "Calculated Risk",
+        ("entry",   "struggling"):"Glass Cannon",
+        ("carry",   "strong"):    "Silent Assassin",
+        ("carry",   "average"):   "Reliable Fragger",
+        ("carry",   "struggling"):"Misfiring",
+        ("clutch",  "strong"):    "Comeback King",
+        ("clutch",  "average"):   "Pressure Player",
+        ("clutch",  "struggling"):"Lucky Shot",
+        ("support", "strong"):    "The Enabler",
+        ("support", "average"):   "Team Player",
+        ("support", "struggling"):"Role Question Mark",
+        ("balanced","strong"):    "Swiss Army Knife",
+        ("balanced","average"):   "Jack of All Trades",
+        ("balanced","struggling"):"Dead Weight",
+    }
+    return labels[(style, tier)]
 
 
 def infer_role(agents):
