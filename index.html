@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valorant Pro Player Insight Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header>
+  <div class="header-title">
+    <div class="v-logo">V</div>
+    <h1>VALORANT <span>PRO</span> INSIGHT</h1>
+  </div>
+  <div class="header-meta">
+    <div>Masters London 2026 &mdash; <strong id="player-count">loading…</strong></div>
+    <div>Last updated: <strong id="updated-at">—</strong></div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ── Stats Table ── -->
+  <section class="card">
+    <div class="card-header">
+      <h2>Player Statistics</h2>
+      <div class="controls">
+        <input type="text" id="search-input" placeholder="Search player / team…" />
+        <select id="role-filter">
+          <option value="">All Roles</option>
+          <option value="Duelist">Duelist</option>
+          <option value="Initiator">Initiator</option>
+          <option value="Controller">Controller</option>
+          <option value="Sentinel">Sentinel</option>
+        </select>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-key="name">Player</th>
+            <th data-key="role">Role</th>
+            <th>Agents</th>
+            <th data-key="acs">ACS</th>
+            <th data-key="kd">K/D</th>
+            <th data-key="kast">KAST</th>
+            <th data-key="adr">ADR</th>
+            <th data-key="kpr">KPR</th>
+            <th data-key="apr">APR</th>
+            <th data-key="fkpr">FKPR</th>
+            <th data-key="fdpr">FDPR</th>
+            <th data-key="hs_pct">HS%</th>
+            <th data-key="clutch_pct">Clutch%</th>
+            <th data-key="archetype">Archetype</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <tr><td colspan="14" class="no-results">Loading data…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── Player Profile ── -->
+  <section class="card" id="profile-section">
+    <div class="card-header">
+      <h2>Player Profile</h2>
+    </div>
+    <div class="profile-grid">
+
+      <!-- Left column: identity + scores + radar -->
+      <div class="profile-left">
+
+        <!-- Identity -->
+        <div class="player-identity">
+          <div class="p-name" id="profile-name">—</div>
+          <div class="p-meta">
+            <span id="profile-team" style="color:var(--text-muted);font-size:13px"></span>
+            <span class="role-badge" id="profile-role-badge"></span>
+          </div>
+          <div style="margin-top:4px">
+            <span class="archetype-badge" id="profile-archetype"></span>
+          </div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:6px">
+            <strong style="color:var(--text)">Agents:</strong> <span id="profile-agents"></span>
+          </div>
+        </div>
+
+        <!-- Radar chart -->
+        <div>
+          <div class="section-title">Skill Radar</div>
+          <div class="chart-wrap">
+            <canvas id="radar-canvas" width="280" height="280"></canvas>
+          </div>
+        </div>
+
+        <!-- Strength bars -->
+        <div class="strength-bars">
+          <div class="section-title">Strength Scores</div>
+          <div id="strength-bars"></div>
+        </div>
+
+      </div>
+
+      <!-- Right column: stats + benchmark + summary -->
+      <div class="profile-right">
+
+        <!-- Raw stats -->
+        <div>
+          <div class="section-title">Statistics</div>
+          <div class="stats-detail-grid" id="profile-stats-grid"></div>
+        </div>
+
+        <!-- Role benchmark -->
+        <div>
+          <div class="section-title">vs Role Average &mdash; <span id="benchmark-role" style="text-transform:none;letter-spacing:0;font-weight:600;color:var(--text)"></span></div>
+          <div class="benchmark-grid" id="benchmark-grid"></div>
+        </div>
+
+        <!-- AI Summary -->
+        <div>
+          <div class="section-title">Player Analysis</div>
+          <div class="ai-summary" id="ai-summary"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Player Comparison ── -->
+  <section class="card" id="comparison-section">
+    <div class="card-header">
+      <h2>Player Comparison</h2>
+    </div>
+
+    <div style="padding:16px 20px;border-bottom:1px solid var(--border)">
+      <div class="comparison-controls">
+        <select id="cmp-a"></select>
+        <div class="vs-divider">VS</div>
+        <select id="cmp-b"></select>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap">
+
+      <!-- Stat rows -->
+      <div style="flex:1;min-width:360px">
+        <div style="display:grid;grid-template-columns:1fr 80px 1fr;padding:10px 0 0">
+          <div style="text-align:right;padding:8px 16px;font-size:16px;font-weight:900;color:#fff" id="cmp-name-a">—</div>
+          <div></div>
+          <div style="text-align:left;padding:8px 16px;font-size:16px;font-weight:900;color:#fff" id="cmp-name-b">—</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 80px 1fr">
+          <div style="text-align:right;padding:2px 16px 10px;font-size:11px;color:var(--text-muted)" id="cmp-meta-a"></div>
+          <div></div>
+          <div style="text-align:left;padding:2px 16px 10px;font-size:11px;color:var(--text-muted)" id="cmp-meta-b"></div>
+        </div>
+        <div id="comparison-rows"></div>
+        <div class="cmp-summary" id="cmp-summary"></div>
+      </div>
+
+      <!-- Comparison radar -->
+      <div class="comparison-radar-wrap" style="flex:0 0 320px">
+        <div style="width:280px">
+          <canvas id="cmp-radar-canvas" width="280" height="280"></canvas>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Comparison trigger hint -->
+  <div style="text-align:center;color:var(--text-muted);font-size:12px;padding:4px 0 12px">
+    Select two players in the <strong style="color:var(--text)">Player Comparison</strong> section above to compare them side by side.
+  </div>
+
+</main>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
