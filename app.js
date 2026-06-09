@@ -42,9 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('updated-at').textContent = data.updated_at || '—';
   document.getElementById('player-count').textContent = allPlayers.length + ' players';
   populateCompareSelects();
+  populateTeamFilter();
   renderTable();
 
   document.getElementById('search-input').addEventListener('input', renderTable);
+  document.getElementById('team-filter').addEventListener('change', renderTable);
   document.getElementById('role-filter').addEventListener('change', renderTable);
   document.getElementById('cmp-a').addEventListener('change', renderComparison);
   document.getElementById('cmp-b').addEventListener('change', renderComparison);
@@ -76,10 +78,12 @@ document.addEventListener('DOMContentLoaded', () => {
 // ── Table rendering ────────────────────────────────────────────────────────
 function filteredSorted() {
   const q = document.getElementById('search-input').value.toLowerCase().trim();
+  const team = document.getElementById('team-filter').value;
   const role = document.getElementById('role-filter').value;
 
   let list = allPlayers.filter(p => {
-    if (q && !p.name.toLowerCase().includes(q) && !p.team.toLowerCase().includes(q)) return false;
+    if (q && !p.name.toLowerCase().includes(q)) return false;
+    if (team && p.team !== team) return false;
     if (role && p.role !== role) return false;
     return true;
   });
@@ -342,6 +346,17 @@ function generateSummary(p) {
 }
 
 // ── Player Comparison ──────────────────────────────────────────────────────
+function populateTeamFilter() {
+  const teams = [...new Set(allPlayers.map(p => p.team).filter(Boolean))].sort();
+  const sel = document.getElementById('team-filter');
+  teams.forEach(t => {
+    const opt = document.createElement('option');
+    opt.value = t;
+    opt.textContent = t;
+    sel.appendChild(opt);
+  });
+}
+
 function populateCompareSelects() {
   const opts = allPlayers.map(p =>
     `<option value="${esc(p.name)}">${esc(p.name)} (${esc(p.team)})</option>`
