@@ -25,7 +25,27 @@ def normalize(val, lo, hi):
     return max(0.0, min(1.0, (val - lo) / (hi - lo))) * 100
 
 
-def compute_scores(p):
+def compute_stat_ranges(players):
+    keys = ['acs', 'adr', 'kd', 'kpr', 'apr', 'fkpr', 'kast', 'clutch_pct', 'clutch_wins']
+    ranges = {}
+    for k in keys:
+        vals = [p[k] for p in players]
+        ranges[k] = {'lo': min(vals), 'hi': max(vals)}
+
+    net_entry = [p['fkpr'] - p['fdpr'] for p in players]
+    ranges['net_entry'] = {'lo': min(net_entry), 'hi': max(net_entry)}
+
+    inv_deaths = [1 / p['deaths_per_round'] for p in players if p['deaths_per_round'] > 0]
+    ranges['inv_deaths'] = {'lo': min(inv_deaths), 'hi': max(inv_deaths)}
+
+    return ranges
+
+
+def r(ranges, key):
+    return ranges[key]['lo'], ranges[key]['hi']
+
+
+def compute_scores(p, ranges):
     acs = p.get("acs", 0)
     adr = p.get("adr", 0)
     kd = p.get("kd", 1.0)
@@ -38,31 +58,33 @@ def compute_scores(p):
     clutch_wins = p.get("clutch_wins", 0)
     deaths_per_round = p.get("deaths_per_round", 0.8)
 
+    # Firepower: ADR weight 35% (was 30%), KPR weight 10% (was 15%)
     firepower = (
-        normalize(acs, 150, 350) * 0.35
-        + normalize(adr, 80, 200) * 0.30
-        + normalize(kd, 0.8, 2.0) * 0.20
-        + normalize(kpr, 0.6, 1.4) * 0.15
+        normalize(acs, *r(ranges, 'acs'))       * 0.35
+        + normalize(adr, *r(ranges, 'adr'))     * 0.35
+        + normalize(kd,  *r(ranges, 'kd'))      * 0.20
+        + normalize(kpr, *r(ranges, 'kpr'))     * 0.10
     )
 
     entry = (
-        normalize(fkpr, 0, 0.5) * 0.60
-        + normalize(fkpr - fdpr, -0.2, 0.3) * 0.40
+        normalize(fkpr,           *r(ranges, 'fkpr'))      * 0.60
+        + normalize(fkpr - fdpr,  *r(ranges, 'net_entry')) * 0.40
     )
 
     survivability = (
-        normalize(kast, 55, 85) * 0.60
-        + (normalize(1 / deaths_per_round, 0.9, 1.8) * 0.40 if deaths_per_round > 0 else 0)
+        normalize(kast, *r(ranges, 'kast')) * 0.60
+        + (normalize(1 / deaths_per_round, *r(ranges, 'inv_deaths')) * 0.40
+           if deaths_per_round > 0 else 0)
     )
 
     clutch = (
-        normalize(clutch_pct, 0, 50) * 0.70
-        + normalize(clutch_wins, 0, 10) * 0.30
+        normalize(clutch_pct,   *r(ranges, 'clutch_pct'))   * 0.70
+        + normalize(clutch_wins, *r(ranges, 'clutch_wins')) * 0.30
     )
 
     teamplay = (
-        normalize(apr, 0, 0.6) * 0.60
-        + normalize(kast, 55, 85) * 0.40
+        normalize(apr,  *r(ranges, 'apr'))  * 0.60
+        + normalize(kast, *r(ranges, 'kast')) * 0.40
     )
 
     return {
@@ -84,20 +106,20 @@ def classify_archetype(scores, p):
     fdpr = p.get("fdpr", 0)
 
     avg_score = (fp + en + sv + cl + tp) / 5
-    # Calibrated to real pro-player score distribution (range ~5–50, median ~35)
-    tier = "strong" if avg_score >= 43 else ("struggling" if avg_score < 22 else "average")
+    # Dynamic 0–100 scale: best player ≈ 100, worst ≈ 0, median ≈ 50
+    tier = "strong" if avg_score >= 60 else ("struggling" if avg_score < 35 else "average")
 
     all_vals = [fp, en, sv, cl, tp]
     max_val = max(all_vals)
 
-    # Style thresholds calibrated to actual percentile ranges
-    if en > 35 and fkpr > fdpr:
+    # Style thresholds rescaled for dynamic 0–100 range
+    if en > 50 and fkpr > fdpr:
         style = "entry"
-    elif cl > 45 and cl == max_val:
+    elif cl > 60 and cl == max_val:
         style = "clutch"
-    elif tp > 56 and tp == max_val:
+    elif tp > 65 and tp == max_val:
         style = "support"
-    elif fp > 38 and fp == max_val:
+    elif fp > 55 and fp == max_val:
         style = "carry"
     else:
         style = "balanced"
@@ -253,9 +275,6 @@ def parse_table(soup):
             "deaths_per_round": deaths_per_round,
         }
 
-        scores = compute_scores(player)
-        player.update(scores)
-        player["archetype"] = classify_archetype(scores, player)
         players.append(player)
 
     return players
@@ -312,16 +331,18 @@ def get_fallback_data():
         kd = p["kd"]
         kpr = p["kpr"]
         p["deaths_per_round"] = (1 / kd) * kpr if kd > 0 else 0.8
-        scores = compute_scores(p)
-        p.update(scores)
-        p["archetype"] = classify_archetype(scores, p)
         players.append(p)
 
     return players
 
 
 def main():
-    players = scrape()
+    players = scrape()                          # pass 1: raw stats only
+    ranges = compute_stat_ranges(players)       # compute dynamic bounds
+    for p in players:                           # pass 2: scores + archetype
+        scores = compute_scores(p, ranges)
+        p.update(scores)
+        p["archetype"] = classify_archetype(scores, p)
     add_role_benchmarks(players)
     output = {
         "updated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
