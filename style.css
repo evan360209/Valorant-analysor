@@ -709,6 +709,19 @@ tbody td {
   color: var(--text);
 }
 
+.modal-summary-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2px 0;
+}
+
+.modal-summary-zh {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
 .modal-strengths-row {
   display: flex;
   gap: 20px;

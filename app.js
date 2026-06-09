@@ -212,6 +212,8 @@ function showModal(p) {
       </div>
       <div class="modal-right-col">
         <div class="modal-summary-text">${summaryHTML.text}</div>
+        <div class="modal-summary-divider"></div>
+        <div class="modal-summary-text modal-summary-zh">${summaryHTML.textZh}</div>
         <div class="modal-strengths-row">
           <div class="modal-strengths-block">
             <div class="modal-label">Strengths</div>
@@ -342,6 +344,24 @@ const SUMMARY_TEMPLATES = {
   'Dead Weight':         p => `${p.name}'s numbers are significantly below the average for their role across all dimensions. Whether due to matchup difficulty, playstyle mismatches, or simply a rough run, the stats don't tell a flattering story this tournament.`,
 };
 
+const SUMMARY_TEMPLATES_ZH = {
+  'First Blood Hunter':  p => `${p.name}是本届赛事中最具威胁性的开团选手之一。他们能够稳定赢得前期对枪，在大多数选手开枪之前便已掌控地图节奏。亮眼的首杀数据表明，他们是整支队伍推进的发动机。`,
+  'Calculated Risk':     p => `${p.name}的打法介于激进与保守之间——不莽撞，也不被动。他们选择在有把握时才发起对枪，用可控的风险换取稳定的推进空间。即便最终数据并不亮眼，对团队的贡献也切实存在。`,
+  'Glass Cannon':        p => `${p.name}热衷于主动发起对枪，但尚未将这种进攻性转化为稳定的回合胜率。高风险、高波动——他们可以在瞬间扭转局面，也可能给对手送上早期优势。`,
+  'Silent Assassin':     p => `${p.name}是一名高效carry选手：顶级伤害输出、稳定的K/D，以及不需要高光时刻就能锁定回合的能力。当别人忙着抢首杀时，${p.name}已经悄悄完成了最具价值的击杀。`,
+  'Reliable Fragger':    p => `${p.name}是一名稳定可靠的输出手。不花哨，但在关键时刻始终出现在计分板上。整个赛程下来，队伍可以放心依赖${p.name}交出稳健的数据表现。`,
+  'Misfiring':           p => `${p.name}具备成为核心carry的实力，但数据显示发挥并不稳定。某些回合表现强势，另一些则几乎消失。一旦找到状态稳定性，这名选手的上限将会更高。`,
+  'Comeback King':       p => `${p.name}是对手在1vX局面中最不想遇到的对手。超高的clutch胜率体现了顶级的心理素质、扎实的局势判断，以及将本该输掉的回合硬生生拿下的机械实力。`,
+  'Pressure Player':     p => `关键回合来临时，${p.name}会站出来。不一定是积分榜首位，但在压力时刻表现稳定。后期冷静处理局势的能力，给整支队伍带来了切实价值。`,
+  'Lucky Shot':          p => `${p.name}在本届赛事中有过几次亮眼的clutch时刻，但样本数量有限，还不足以断定这是稳定强项。再多几场类似表现，这一评价将会改变。`,
+  'The Enabler':         p => `${p.name}能让队友变得更强。高助攻数与超高的回合参与率，体现了一名善于创造机会、收集信息、在关键时刻撑住局面的选手。`,
+  'Team Player':         p => `${p.name}是一名可靠的团队型选手。稳定的回合参与度和扎实的助攻数说明他们清楚自己的定位，并在不需要个人英雄主义的情况下持续执行到位。`,
+  'Role Question Mark':  p => `${p.name}在各维度的数据均低于同位置平均水平，且没有明显亮点可以解释这一差距。可能是对阵对手较强、战术层面有所牺牲，也可能只是本届状态欠佳。`,
+  'Swiss Army Knife':    p => `${p.name}是一名无懈可击的全能型选手。火力、突破、clutch与团队协作均处于顶级水准——这种均衡的能力图谱，正是教练团队构建体系的基础。`,
+  'Jack of All Trades':  p => `${p.name}全面均衡，但没有哪个维度能形成统治力。灵活适应各种局面，对手也很难找到明显软肋。稳定性是目前最大的优势。`,
+  'Dead Weight':         p => `${p.name}在本届赛事中各项关键数据均明显低于同位置平均水平。无论是因为对阵强队、打法不契合，还是状态欠佳，本届数据都难以给出正面评价。`,
+};
+
 function generateSummary(p) {
   const sorted = SCORE_NAMES
     .map(k => ({ key: k, val: p[k] || 0 }))
@@ -350,10 +370,12 @@ function generateSummary(p) {
   const strengths = sorted.slice(0, 2).map(s => SCORE_LABELS[s.key]);
   const weaknesses = sorted.slice(-2).map(s => SCORE_LABELS[s.key]);
 
-  const templateFn = SUMMARY_TEMPLATES[p.archetype] || SUMMARY_TEMPLATES['Jack of All Trades'];
-  const text = templateFn(p);
+  const fallback = SUMMARY_TEMPLATES['Jack of All Trades'];
+  const fallbackZh = SUMMARY_TEMPLATES_ZH['Jack of All Trades'];
+  const text = (SUMMARY_TEMPLATES[p.archetype] || fallback)(p);
+  const textZh = (SUMMARY_TEMPLATES_ZH[p.archetype] || fallbackZh)(p);
 
-  return { text, strengths, weaknesses };
+  return { text, textZh, strengths, weaknesses };
 }
 
 // ── Player Comparison ──────────────────────────────────────────────────────
