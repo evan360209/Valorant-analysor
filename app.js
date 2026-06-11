@@ -245,7 +245,10 @@ function showModal(p) {
     <!-- Header -->
     <div class="modal-header">
       <div class="modal-header-left">
-        <div class="modal-player-name">${esc(p.name)}</div>
+        <div class="modal-player-name-row">
+          <span class="modal-player-name">${esc(p.name)}</span>
+          ${p.vlr_url ? `<a href="${esc(p.vlr_url)}" target="_blank" class="vlr-profile-link">VLR.gg ↗</a>` : ''}
+        </div>
         <div class="modal-player-meta">
           <span style="color:var(--text-muted);font-size:13px">${esc(p.team)}</span>
           <span class="role-badge role-${p.role}">${p.role}</span>

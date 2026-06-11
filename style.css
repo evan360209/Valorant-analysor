@@ -660,6 +660,13 @@ tbody td {
 
 .modal-header-left { display: flex; flex-direction: column; gap: 8px; }
 
+.modal-player-name-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .modal-player-name {
   font-size: 28px;
   font-weight: 900;
@@ -667,6 +674,19 @@ tbody td {
   letter-spacing: .5px;
   line-height: 1.1;
 }
+
+.vlr-profile-link {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid rgba(255,70,85,0.35);
+  border-radius: 4px;
+  padding: 3px 8px;
+  transition: background .12s;
+  white-space: nowrap;
+}
+.vlr-profile-link:hover { background: rgba(255,70,85,0.14); }
 
 .modal-player-meta {
   display: flex;

@@ -247,6 +247,11 @@ def parse_table(soup):
         team_tag = name_cell.find("div", class_="stats-player-country")
         team = team_tag.get_text(strip=True) if team_tag else "—"
 
+        # VLR profile URL — already in the <a href="/player/11494/keiko"> tag
+        link_tag = name_cell.find("a", href=True)
+        vlr_path = link_tag["href"] if link_tag else ""
+        vlr_url = f"https://www.vlr.gg{vlr_path}" if vlr_path else ""
+
         # Agents — parse from img src path, e.g. /img/vlr/game/agents/vyse.png → "Vyse"
         agent_imgs = cells[1].find_all("img") if len(cells) > 1 else []
         agents = []
@@ -305,6 +310,7 @@ def parse_table(soup):
             "clutch_pct": clutch_pct,
             "clutch_wins": clutch_wins,
             "deaths_per_round": deaths_per_round,
+            "vlr_url": vlr_url,
         }
 
         players.append(player)
