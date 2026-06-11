@@ -811,6 +811,108 @@ tbody td {
   gap: 20px;
 }
 
+/* ── Highlights ── */
+.hl-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.hl-top5 { display: flex; flex-direction: column; gap: 6px; }
+
+.hl-rank-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color .12s, background .12s;
+}
+.hl-rank-row:hover { border-color: var(--accent); background: #1e2638; }
+
+.hl-rank-num {
+  width: 28px;
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+.hl-rank-num.gold   { color: #fbbf24; }
+.hl-rank-num.silver { color: #94a3b8; }
+.hl-rank-num.bronze { color: #c2843a; }
+
+.hl-rank-name { flex: 1; font-weight: 700; color: #fff; font-size: 14px; }
+.hl-rank-team { font-size: 12px; color: var(--text-muted); width: 40px; }
+.hl-rank-acs  { font-size: 17px; font-weight: 900; color: var(--accent); min-width: 42px; text-align: right; }
+
+.hl-role-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+@media (max-width: 700px) { .hl-role-grid { grid-template-columns: 1fr 1fr; } }
+
+.hl-role-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color .12s, background .12s;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.hl-role-card:hover { border-color: var(--accent); background: #1e2638; }
+
+.hl-role-card .hl-card-acs {
+  font-size: 30px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-top: 4px;
+}
+.hl-role-card .hl-card-name { font-size: 15px; font-weight: 700; color: var(--text); }
+.hl-role-card .hl-card-team { font-size: 11px; color: var(--text-muted); }
+
+.hl-worst-card {
+  background: rgba(248,113,113,0.06);
+  border: 1px solid rgba(248,113,113,0.25);
+  border-radius: 10px;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: border-color .12s;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.hl-worst-card:hover { border-color: var(--red); }
+
+.hl-worst-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--red);
+  margin-bottom: 5px;
+}
+.hl-worst-name { font-size: 22px; font-weight: 900; color: #fff; }
+.hl-worst-meta { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+.hl-worst-acs  {
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--red);
+  margin-left: auto;
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
 /* ── Summary loading spinner ── */
 .modal-summary-loading {
   color: var(--text-muted);

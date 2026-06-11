@@ -91,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
   populateCompareSelects();
   populateTeamFilter();
   renderTable();
+  renderHighlights();
 
   document.getElementById('search-input').addEventListener('input', renderTable);
   document.getElementById('team-filter').addEventListener('change', renderTable);
@@ -484,6 +485,93 @@ function getStrengthsWeaknesses(p) {
 }
 
 // ── Player Comparison ──────────────────────────────────────────────────────
+function renderHighlights() {
+  if (!allPlayers.length) return;
+
+  const top5 = [...allPlayers].sort((a, b) => b.acs - a.acs).slice(0, 5);
+
+  const ROLES = ['Duelist', 'Initiator', 'Controller', 'Sentinel'];
+  const bestByRole = {};
+  ROLES.forEach(role => {
+    const group = allPlayers.filter(p => p.role === role);
+    if (group.length) bestByRole[role] = group.reduce((best, p) => p.acs > best.acs ? p : best);
+  });
+
+  const worst = [...allPlayers].sort((a, b) => a.acs - b.acs)[0];
+
+  const rankColors = ['gold', 'silver', 'bronze', '', ''];
+  const rankSymbols = ['#1', '#2', '#3', '#4', '#5'];
+
+  const top5HTML = `
+    <div>
+      <div class="hl-section-title">Top 5 ACS</div>
+      <div class="hl-top5">
+        ${top5.map((p, i) => `
+          <div class="hl-rank-row" data-name="${esc(p.name)}">
+            <span class="hl-rank-num ${rankColors[i]}">${rankSymbols[i]}</span>
+            <span class="hl-rank-name">${esc(p.name)}</span>
+            <span class="hl-rank-team">${esc(p.team)}</span>
+            <span class="role-badge role-${p.role}" style="font-size:10px">${p.role}</span>
+            <span class="hl-rank-acs">${fmt(p.acs)}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+
+  const roleIcons = { Duelist: '⚔', Initiator: '📡', Controller: '🌪', Sentinel: '🛡' };
+  const bestByRoleHTML = `
+    <div>
+      <div class="hl-section-title">Best ACS by Role</div>
+      <div class="hl-role-grid">
+        ${ROLES.map(role => {
+          const p = bestByRole[role];
+          if (!p) return `<div class="hl-role-card"><div class="hl-card-team">${role} — no data</div></div>`;
+          const info = archetypeInfo(p.archetype);
+          return `
+            <div class="hl-role-card" data-name="${esc(p.name)}">
+              <span class="role-badge role-${role}">${roleIcons[role] || ''} ${role}</span>
+              <div class="hl-card-acs">${fmt(p.acs)}</div>
+              <div class="hl-card-name">${esc(p.name)}</div>
+              <div class="hl-card-team">${esc(p.team)}</div>
+              <div style="margin-top:2px">
+                <span style="font-size:10px;font-weight:700;color:${info.color}">${esc(p.archetype || '')}</span>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `;
+
+  const worstHTML = worst ? `
+    <div>
+      <div class="hl-section-title">最坑选手 · Lowest ACS</div>
+      <div class="hl-worst-card" data-name="${esc(worst.name)}">
+        <div>
+          <div class="hl-worst-label">最坑选手 · Lowest ACS</div>
+          <div class="hl-worst-name">${esc(worst.name)}</div>
+          <div class="hl-worst-meta">${esc(worst.team)} · ${worst.role}</div>
+        </div>
+        <div class="hl-worst-acs">${fmt(worst.acs)}</div>
+      </div>
+    </div>
+  ` : '';
+
+  const body = document.getElementById('highlights-body');
+  body.innerHTML = `<div style="padding:20px;display:flex;flex-direction:column;gap:24px">
+    ${top5HTML}${bestByRoleHTML}${worstHTML}
+  </div>`;
+
+  // Wire clicks → open modal
+  body.querySelectorAll('[data-name]').forEach(el => {
+    el.addEventListener('click', () => {
+      const p = allPlayers.find(x => x.name === el.dataset.name);
+      if (p) showModal(p);
+    });
+  });
+}
+
 function populateTeamFilter() {
   const teams = [...new Set(allPlayers.map(p => p.team).filter(Boolean))].sort();
   const sel = document.getElementById('team-filter');
